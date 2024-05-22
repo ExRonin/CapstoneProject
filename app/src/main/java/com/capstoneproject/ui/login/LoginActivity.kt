@@ -8,7 +8,6 @@ import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.databinding.ActivityLoginBinding
 
 
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
