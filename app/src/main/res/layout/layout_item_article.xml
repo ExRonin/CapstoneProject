@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/normal_150"
+    app:cardUseCompatPadding="true"
+    android:layout_marginEnd="@dimen/normal_125"
+    android:orientation="vertical"
+    android:background="@drawable/bg_rounded_white"
+    android:layout_margin="@dimen/small_50">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/normal_100"
+        android:paddingVertical="@dimen/normal_100"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/view_lines">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/normal_100">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_text"
+                tools:text="@tools:sample/lorem/random"
+                android:fontFamily="@font/poppins_bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/body_1"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/small_100"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yesterday"
+                android:fontFamily="@font/poppins"
+                android:textSize="@dimen/caption"
+                android:textColor="@color/gray"
+                android:layout_marginTop="@dimen/small_50" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.2"
+            android:orientation="vertical"
+            android:layout_gravity="end">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/normal_100">
+
+                <ImageView
+                    android:id="@+id/iv_artikel"
+                    android:layout_width="@dimen/image_user_profile_large"
+                    android:layout_height="@dimen/image_user_profile_large"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavTextAppearanceActive">
+        <item name="android:textSize">@dimen/caption</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="BottomNavTextAppearanceInactive">
+        <item name="android:textSize">@dimen/caption</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+</resources>

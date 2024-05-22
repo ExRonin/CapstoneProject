@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/custom_220"
+    android:layout_height="@dimen/custom_180"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/normal_150"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_food_picture"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/large_225"
+            tools:src="@tools:sample/backgrounds/scenic"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/normal_75"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_food_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/default_text"
+                tools:text="@tools:sample/full_names"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/subtitle_2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_food_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/default_text"
+                    tools:text="Rp 0"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/text_orange"
+                    android:textSize="@dimen/caption" />
+
+                <View
+                    android:id="@+id/view_lines_item_food"
+                    android:layout_width="@dimen/small_75"
+                    android:layout_height="1.5dp"
+                    android:background="@color/colorPrimaryDarkPro"
+                    android:layout_marginStart="@dimen/small_100" />
+
+                <TextView
+                    android:id="@+id/tv_donate_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/donate"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/caption"
+                    android:layout_marginStart="@dimen/small_100" />
+
+            </LinearLayout>
+
+
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/small_25">
+                
+                <ImageView
+                    android:layout_width="@dimen/normal_75"
+                    android:layout_height="@dimen/normal_75"
+                    android:src="@drawable/baseline_location_on_24"
+                    app:tint="@color/gray" />
+
+                <TextView
+                    android:id="@+id/tv_location_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/default_text"
+                    tools:text="@string/lowokwaru"
+                    android:textSize="@dimen/overline"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/colorPrimaryDarkPro"
+                    android:layout_marginStart="@dimen/small_50" />
+                
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
