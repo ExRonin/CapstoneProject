@@ -16,9 +16,25 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnNextRegister.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+        onAction()
+
+
+
+    }
+
+    private fun onAction() {
+        binding.apply {
+            btnRegister.setOnClickListener {
+                finish()
+            }
+
+            tvLogin.setOnClickListener {
+                finish()
+            }
+
+            btnBackRegister.setOnClickListener {
+                finish()
+            }
         }
     }
 }

@@ -2,6 +2,9 @@
 <resources>
     <color name="colorPrimary">#77189F</color>
     <color name="colorPrimaryDark">#470E5F</color>
+    <color name="colorSoftPrimary">#CEA7DF</color>
+    <color name="colorBackground">#8645ab</color>
+    <color name="colorLightrimary">#f7e5fa</color>
     <color name="colorAccent">#FDB022</color>
 
     <color name="md_grey_50">#FAFAFA</color>
@@ -26,9 +29,9 @@
     <color name="danger">#D92121</color>
     <color name="danger_dark">#781C1C</color>
     <color name="soft_gray">#E4E2E2</color>
-    <color name="bg_edit_text">#E8F7F2</color>
+    <color name="bg_edit_text">#FFFFFF</color>
     <color name="text_color_hint">#4D000000</color>
-    <color name="et_border_color">#BBE7D9</color>
+    <color name="et_border_color">#eaecef</color>
     <color name="soft_green">#E8F7F2</color>
     <color name="success_green">#73E2A3</color>
     <color name="text_orange">#FFA033</color>

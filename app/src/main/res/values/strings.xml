@@ -172,4 +172,26 @@
     <string name="apa_anda_yakin">Apa anda yakin?</string>
     <string name="apa_anda_yakin_ingin_mengahpus_akun">Apa anda yakin ingin mengahpus akun?</string>
     <string name="selamat_akun_anda_berhasil_dihapus">Selamat akun anda berhasil dihapus</string>
+    <string name="masukkan_email_anda">Masukkan email anda</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="masukkan_kata_sandi">Masukkan kata sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="atau_daftar_dengan">Atau daftar dengan</string>
+    <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
+    <string name="belum_mempunyai_akun">Belum mempunyai akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="ulangi_kata_sandi">Ulangi Kata Sandi</string>
+    <string name="atau_masuk_dengan">Atau masuk dengan</string>
+    <string name="booking">Booking</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="jakarta_selatan">Jakarta Selatan</string>
+    <string name="spesial_untukmu">🎁 Spesial Untukmu</string>
+    <string name="jenis_media_iklan">Jenis Media Iklan</string>
+    <string name="baliho">Baliho</string>
+    <string name="bando_jalan">Bando Jalan</string>
+    <string name="billboard">Billboard</string>
+    <string name="digital_ads">Digital Ads</string>
+    <string name="lokasi_media_iklan_populer">⭐ Lokasi Media Iklan Populer</string>
+    <string name="lihat_lainnya">Lihat lainnya</string>
+    <string name="pasang_iklan_anda_di_media_iklan_populer_di_seluruh_kota_indonesia">Pasang iklan Anda di media iklan populer di seluruh kota Indonesia.</string>
 </resources>

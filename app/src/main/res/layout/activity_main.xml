@@ -30,7 +30,7 @@
         app:labelVisibilityMode="labeled"
         app:itemTextAppearanceActive="@style/BottomNavTextAppearanceActive"
         app:itemTextAppearanceInactive="@style/BottomNavTextAppearanceInactive"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@color/bottom_nav_icon_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
