@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.databinding.ActivityOnboardingBinding
+import com.capstoneproject.ui.login.LoginActivity
 import com.capstoneproject.ui.onboardscreen.adapter.OnboardingAdapter
 import com.capstoneproject.ui.register.RegisterActivity
 
@@ -23,7 +24,7 @@ class OnboardingActivity : AppCompatActivity() {
             val editor = sharedPreferences.edit()
             editor.putBoolean("is_first_run", false)
             editor.apply()
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

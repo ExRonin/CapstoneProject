@@ -9,12 +9,21 @@
         android:id="@+id/homeFragment"
         android:name="com.capstoneproject.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_foodFragment"
-            app:destination="@id/foodFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.capstoneproject.ui.booking.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.capstoneproject.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.capstoneproject.ui.search.SearchFragment"
+        android:label="fragment_seach"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>

@@ -6,13 +6,13 @@
         android:icon="@drawable/selector_home_icon"/>
 
     <item
-        android:id="@+id/foodFragment"
-        android:title="Makanan"
-        android:icon="@drawable/selector_food_icon"/>
+        android:id="@+id/searchFragment"
+        android:title="Cari"
+        android:icon="@drawable/selector_search_icon"/>
 
     <item
-        android:id="@+id/historyFragment"
-        android:title="Riwayat"
+        android:id="@+id/bookingFragment"
+        android:title="Booking"
         android:icon="@drawable/selector_history_icon"/>
 
     <item

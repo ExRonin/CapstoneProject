@@ -77,5 +77,6 @@
     <dimen name="custom_360">360dp</dimen>
     <dimen name="stroke_1">1dp</dimen>
     <dimen name="custom_image_110">110dp</dimen>
+    <dimen name="custom_160">160dp</dimen>
 
 </resources>
