@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.databinding.ActivityLoginBinding
 import com.capstoneproject.ui.register.RegisterActivity
+import com.capstoneproject.ui.survey.ActivitySurvey
 
 
 class LoginActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private fun onAction() {
         binding.apply {
             btnLogin.setOnClickListener {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                startActivity(Intent(this@LoginActivity, ActivitySurvey::class.java))
             }
 
             tvRegister.setOnClickListener {
