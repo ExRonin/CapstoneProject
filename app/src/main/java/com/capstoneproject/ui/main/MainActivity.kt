@@ -1,13 +1,13 @@
 package com.capstoneproject.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.capstoneproject.R
-import androidx.navigation.NavController
+import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
+import com.capstoneproject.R
 import com.capstoneproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation = binding.bottomNavigationView
         val navController = Navigation.findNavController(this, R.id.host_fragment)
-
         NavigationUI.setupWithNavController(bottomNavigation, navController)
+
     }
 }
