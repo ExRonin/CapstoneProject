@@ -36,4 +36,6 @@
     <color name="success_green">#73E2A3</color>
     <color name="text_orange">#FFA033</color>
     <color name="soft_orange">#FFF8E2</color>
+    <color name="warning">#FDB022</color>
+
 </resources>
