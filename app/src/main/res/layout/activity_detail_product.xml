@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.detailproduct.DetailProductActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/slider_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/custom_230"
+                    android:layout_centerInParent="true"
+                    app:sliderAnimationDuration="600"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorEnabled="true"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="15dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF"
+                    app:sliderScrollTimeInSec="60"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <LinearLayout
+                    android:id="@+id/btn_back_detail_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/normal_100"
+                    android:background="@drawable/bg_circle_white"
+                    android:padding="@dimen/small_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_left_24"
+                        app:tint="@color/md_grey_500" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_favorite_detail_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/normal_100"
+                    android:background="@drawable/bg_circle_white"
+                    android:padding="@dimen/small_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_left_24"
+                        app:tint="@color/md_grey_500" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_share_detail_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:layout_marginEnd="@dimen/small_100"
+                    android:background="@drawable/bg_circle_white"
+                    android:padding="@dimen/small_50"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_favorite_detail_product"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_left_24"
+                        app:tint="@color/md_grey_500" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/normal_100">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_light_purple"
+                        android:paddingHorizontal="@dimen/small_100"
+                        android:paddingVertical="@dimen/small_50">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@string/videotron"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/caption"
+                            android:fontFamily="@font/poppins"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/normal_75"
+                            android:layout_height="@dimen/normal_75"
+                            android:src="@drawable/icon_star" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@string/_4_6"
+                            android:textColor="@color/warning"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginStart="@dimen/small_25"
+                            android:layout_marginTop="@dimen/small_25"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@string/_39_reviews"
+                            android:textColor="@color/md_grey_800"
+                            android:fontFamily="@font/poppins_light"
+                            android:layout_marginStart="@dimen/small_25"
+                            android:layout_marginTop="@dimen/small_25"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_text"
+                    tools:text="@string/videotron_grand_indonesia"
+                    android:textSize="@dimen/body_1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_marginTop="@dimen/normal_100" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/small_50">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_location_on_24"
+                        app:tint="@color/md_grey_500" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="@dimen/small_50" >
+
+                        <TextView
+                            android:id="@+id/tv_location_product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@string/jl_kebon_kacang_raya_grand_indonesia_kota_jakarta_pusat_dki_jakarta"
+                            android:fontFamily="@font/poppins"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_open_map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/buka_maps"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/colorPrimary"
+                            />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:layout_marginTop="@dimen/normal_125"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:id="@+id/tv_product_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_text"
+                    tools:text="@string/dummy_desc"
+                    android:layout_marginTop="@dimen/small_100"
+                    android:fontFamily="@font/poppins" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spesifikasi"
+                    android:layout_marginTop="@dimen/normal_125"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pemilik"
+                    android:layout_marginTop="@dimen/normal_125"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/small_100">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_user"
+                        android:layout_width="@dimen/large_100"
+                        android:layout_height="@dimen/large_100"
+                        tools:src="@tools:sample/avatars"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/small_100"
+                        android:orientation="vertical" >
+                        
+                        <TextView
+                            android:id="@+id/tv_name_and_company"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@tools:sample/full_names"
+                            android:fontFamily="@font/poppins_medium" />
+
+                        <TextView
+                            android:id="@+id/tv_user_position"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_text"
+                            tools:text="@tools:sample/full_names"
+                            android:textSize="@dimen/caption"
+                            android:textColor="@color/md_grey_600"
+                            android:fontFamily="@font/poppins" />
+                        
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_light_purple"
+                        android:padding="@dimen/normal_75">
+
+                        <ImageView
+                            android:layout_width="@dimen/normal_100"
+                            android:layout_height="@dimen/normal_100"
+                            android:src="@drawable/icon_messafe"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_light_purple"
+                        android:padding="@dimen/normal_75"
+                        android:layout_marginStart="@dimen/small_100">
+
+                        <ImageView
+                            android:layout_width="@dimen/normal_100"
+                            android:layout_height="@dimen/normal_100"
+                            android:src="@drawable/icon_phone" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/large_100"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/normal_100">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/normal_100"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/mulai_dari"
+                    android:textSize="@dimen/caption" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/default_text"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/h6"
+                        tools:text="@string/rp53_000_000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small_25"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/bulan"
+                        android:textSize="@dimen/caption" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_booking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_color_primary"
+                android:text="@string/sewa_sekarang"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

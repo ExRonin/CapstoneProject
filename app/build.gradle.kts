@@ -46,6 +46,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.activity:activity:1.8.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -55,4 +56,9 @@ dependencies {
     implementation ("com.romandanylyk:pageindicatorview:1.0.3")
     implementation ("com.airbnb.android:lottie:3.3.1")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    implementation("com.github.bumptech.glide:glide:4.15.0")
+    implementation("com.github.smarteist:autoimageslider:1.3.9")
+
+
 }

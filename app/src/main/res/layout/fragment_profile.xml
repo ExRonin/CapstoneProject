@@ -1,14 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.ProfileFragment"
+    android:background="@color/white"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/profile" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/custom_image_120"
+                android:background="@drawable/bg_rounded_bottom_primary"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:alpha="0.125"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vector_bg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/container_image_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_circle_primary"
+                android:padding="@dimen/small_75"
+                app:layout_constraintBottom_toBottomOf="@id/container_header"
+                app:layout_constraintEnd_toEndOf="@id/container_header"
+                app:layout_constraintStart_toStartOf="@id/container_header"
+                app:layout_constraintTop_toBottomOf="@id/container_header">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_user"
+                    android:layout_width="@dimen/custom_image_120"
+                    android:layout_height="@dimen/custom_image_120"
+                    tools:src="@tools:sample/avatars" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_stroke_primary"
+                android:padding="@dimen/small_50"
+                app:layout_constraintBottom_toBottomOf="@id/container_image_user"
+                app:layout_constraintEnd_toEndOf="@id/container_image_user">
+
+                <ImageView
+                    android:id="@+id/btn_edit_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_edit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/container_image_user"
+                >
+
+                <TextView
+                    android:id="@+id/tv_fullname_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/normal_75"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/default_text"
+                    android:textSize="@dimen/h6"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/tv_email_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/default_text"
+                    android:textColor="@color/md_grey_700"
+                    tools:text="@tools:sample/us_phones" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_175"
+                    app:cardCornerRadius="@dimen/small_100"
+                    app:cardElevation="@dimen/small_100">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/normal_100">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/akun_dan_kemanan"
+                            android:textSize="@dimen/body_1"
+                            android:fontFamily="@font/poppins_semibold" />
+
+                        <LinearLayout
+                            android:id="@+id/container_edit_acount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+                            
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_edit_profile"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ubah_data_akun"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+                            
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_change_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_change_password"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ubah_kata_sandi"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_change_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125"
+                            android:layout_marginBottom="@dimen/small_100">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_language"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/bahasa"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_175"
+                    app:cardCornerRadius="@dimen/small_100"
+                    app:cardElevation="@dimen/small_100"
+                    android:layout_marginBottom="@dimen/normal_100">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/normal_100">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lainnya"
+                            android:textSize="@dimen/body_1"
+                            android:fontFamily="@font/poppins_semibold" />
+
+                        <LinearLayout
+                            android:id="@+id/container_settings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_settings"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pengaturan"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_tmc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_tmc"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/syarat_amp_ketentuan"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_pvc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_pvc"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/kebijakan_privasi"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_call_center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_call_center"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pusat_bantuan"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/normal_125">
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="@dimen/normal_125"
+                                android:src="@drawable/icon_logout"
+                                android:layout_marginEnd="@dimen/normal_75"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/keluar"
+                                android:layout_weight="1"
+                                android:textColor="@color/danger"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/normal_125"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_chevron_right_24"
+                                app:tint="@color/danger"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
