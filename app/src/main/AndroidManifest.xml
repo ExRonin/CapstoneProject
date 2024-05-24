@@ -15,8 +15,11 @@
         android:theme="@style/Theme.CapstoneProject"
         tools:targetApi="31">
         <activity
-            android:name=".ui.detailproduct.DetailProductActivity"
-            android:exported="true" >
+            android:name=".ui.bookingprocess.bookingdetail.edit_profile.EditProfileOrdererActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.bookingprocess.BookingProcessActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,17 +27,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.detailproduct.DetailProductActivity"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true" />
         <activity android:name=".ui.onboardscreen.OnboardingActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.survey.ActivitySurvey" />
         <activity
             android:name=".ui.splashscreen.SplashActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
