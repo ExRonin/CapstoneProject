@@ -21,6 +21,15 @@
                 android:background="@drawable/bg_rounded_bottom_primary"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:src="@drawable/vector_bg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.125"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -385,6 +394,13 @@
                     android:layout_marginEnd="@dimen/normal_100"
                     android:textSize="@dimen/caption"
                     android:layout_marginTop="@dimen/small_50" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recommendation_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/custom_180"
+                    tools:listitem="@layout/item_recommendation_location"
+                    android:layout_marginTop="@dimen/normal_100"/>
 
 
             </LinearLayout>
