@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -14,17 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CapstoneProject"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2bS2u53jbGze1_eIAy5C7kuF5_t4toYM"/>
         <activity
             android:name=".ui.bookingprocess.bookingdetail.edit_profile.EditProfileOrdererActivity"
             android:exported="false" />
         <activity
             android:name=".ui.bookingprocess.BookingProcessActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.detailproduct.DetailProductActivity"
@@ -33,14 +37,18 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true" />
+            android:exported="true" ><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".ui.onboardscreen.OnboardingActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.survey.ActivitySurvey" />
         <activity
             android:name=".ui.splashscreen.SplashActivity"
-            android:exported="true" />
+            android:exported="true" ></activity>
     </application>
 
 </manifest>
