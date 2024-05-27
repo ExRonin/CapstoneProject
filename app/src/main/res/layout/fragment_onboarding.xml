@@ -12,10 +12,13 @@
         android:layout_width="230dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
         android:scaleType="centerCrop"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_onboarding_title"
@@ -38,7 +41,7 @@
         android:layout_below="@id/text_onboarding_title"
         android:text="@string/start"
         android:textSize="14sp"
-        android:textColor="@color/md_black_1000"
+        android:textColor="@color/md_grey_300"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
 
