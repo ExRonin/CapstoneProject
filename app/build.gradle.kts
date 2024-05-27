@@ -55,7 +55,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation ("com.google.android.gms:play-services-tflite-gpu:16.2.0")
     implementation ("com.romandanylyk:pageindicatorview:1.0.3")
-    implementation ("com.airbnb.android:lottie:3.3.1")
+    implementation ("com.airbnb.android:lottie:6.4.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")

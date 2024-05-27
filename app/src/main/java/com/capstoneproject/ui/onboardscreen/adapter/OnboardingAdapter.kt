@@ -23,17 +23,22 @@ class OnboardingAdapter(
             0 -> OnboardingFragment.newInstance(
                 context.resources.getString(R.string.title_onboarding),
                 context.resources.getString(R.string.description_onboarding_1),
-                R.drawable.frame7
+                R.raw.ads1
             )
             1 -> OnboardingFragment.newInstance(
                 context.resources.getString(R.string.title_onboarding_2),
                 context.resources.getString(R.string.description_onboarding_2),
-                R.drawable.frame7
+                R.raw.ads2
             )
             2 -> OnboardingFragment.newInstance(
                 context.resources.getString(R.string.title_onboarding_3),
                 context.resources.getString(R.string.description_onboarding_3),
-                R.drawable.frame7
+                R.raw.ads3
+            )
+            3 -> OnboardingFragment.newInstance(
+                context.resources.getString(R.string.title_onboarding_4),
+                context.resources.getString(R.string.description_onboarding_4),
+                R.raw.ads4
             )
             else -> OnboardingFragment.newInstance(
                 context.resources.getString(R.string.title_onboarding),
@@ -48,6 +53,6 @@ class OnboardingAdapter(
     }
 
     companion object {
-        private const val NUM_ITEMS = 3
+        private const val NUM_ITEMS = 4
     }
 }
