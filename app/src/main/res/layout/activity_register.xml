@@ -84,7 +84,8 @@
                     android:background="@drawable/bg_edit_text"
                     android:fontFamily="@font/poppins"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint" />
+                    android:textColorHint="@color/text_color_hint"
+                    android:importantForAutofill="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +114,8 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint" />
+                    android:textColorHint="@color/text_color_hint"
+                    android:importantForAutofill="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +144,8 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint" />
+                    android:textColorHint="@color/text_color_hint"
+                    android:importantForAutofill="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
