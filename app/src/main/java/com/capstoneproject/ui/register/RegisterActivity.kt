@@ -18,8 +18,6 @@ class RegisterActivity : AppCompatActivity() {
 
         onAction()
 
-
-
     }
 
     private fun onAction() {
