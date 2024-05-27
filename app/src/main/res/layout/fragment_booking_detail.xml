@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/_1_3_detail_pemesanan"
+                android:text="@string/_1_2_detail_pemesanan"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -587,6 +587,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
+                android:id="@+id/btn_booking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/normal_100"

@@ -3,14 +3,14 @@ package com.capstoneproject.ui.bookingprocess.bookingdetail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.capstoneproject.R
 import com.capstoneproject.databinding.FragmentBookingDetailBinding
 import com.capstoneproject.ui.bookingprocess.bookingdetail.edit_profile.EditProfileOrdererActivity
-import com.capstoneproject.ui.bookingprocess.bookingpayment.BookingPaymentFragment
+import com.capstoneproject.ui.bookingprocess.bookingreceipt.BookingReceiptFragment
 
 
 class BookingDetailFragment : Fragment() {
@@ -34,12 +34,12 @@ class BookingDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-//            btn.setOnClickListener {
-//                val fragmentManager = parentFragmentManager
-//                val fragmentTransaction = fragmentManager.beginTransaction()
-//                fragmentTransaction.replace(R.id.fragment_container, BookingPaymentFragment())
-//                fragmentTransaction.commit()
-//            }
+            btnBooking.setOnClickListener {
+                val fragmentManager = parentFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, BookingReceiptFragment())
+                fragmentTransaction.commit()
+            }
         }
 
         setInformationBooking()
