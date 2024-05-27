@@ -218,7 +218,7 @@
     <string name="dummy_desc">Billboard ini merupakan billboard satu-satunya yang ada di sepanjang jalan tol Jakarta-Cikampek pada KM. 143. Billboard dengan panjang 5x10 meter ini memiliki pen...</string>
     <string name="spesifikasi">Spesifikasi</string>
     <string name="pemilik">Pemilik</string>
-    <string name="_1_3_detail_pemesanan">1 / 3 Detail Pemesanan</string>
+    <string name="_1_2_detail_pemesanan">1 / 2 Detail Pemesanan</string>
     <string name="detail_pemesanan">Detail Pemesanan</string>
     <string name="detail_pemesan">Detail Pemesan</string>
     <string name="nama_lengkap">Nama Lengkap</string>
@@ -237,4 +237,10 @@
     <string name="mandiri_virtual_account">Mandiri Virtual Account</string>
     <string name="bca_virtual_account">BCA Virtual Account</string>
     <string name="bri_virtual_account">BRI Virtual Account</string>
+    <string name="_2_2_bayar">2 / 2 Bayar</string>
+    <string name="selesaikan_dalam">Selesaikan dalam</string>
+    <string name="lakukan_transfer_ke">Lakukan Transfer ke</string>
+    <string name="lihat_daftar_booking">Lihat Daftar Booking</string>
+    <string name="cara_membayar">Cara Membayar</string>
+    <string name="tnc_desc"><![CDATA[Dengan menekan tombol bayar, kamu menyetujui Syarat & Ketentuan dan Kebijakan Provasi AdVantage.]]></string>
 </resources>

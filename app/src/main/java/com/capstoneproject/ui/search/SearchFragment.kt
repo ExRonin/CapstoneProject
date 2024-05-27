@@ -75,8 +75,6 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         googleMap.uiSettings.isCompassEnabled = true
         googleMap.uiSettings.isMapToolbarEnabled = true
 
-
-
         googleMap.setOnMapLongClickListener { latLng ->
             googleMap.addMarker(
                 MarkerOptions()
