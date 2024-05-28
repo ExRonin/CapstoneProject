@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstoneproject.databinding.FragmentOnboardingBinding
-
 class OnboardingFragment : Fragment() {
 
     private lateinit var binding: FragmentOnboardingBinding
@@ -30,7 +29,14 @@ class OnboardingFragment : Fragment() {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         binding.textOnboardingTitle.text = title
         binding.textOnboardingDescription.text = description
-        binding.imageOnboarding.setImageResource(imageResource)
+
+
+        val resourceName = resources.getResourceTypeName(imageResource)
+        if (resourceName == "raw") {
+            binding.imageOnboarding.setAnimation(imageResource)
+        } else if (resourceName == "drawable") {
+            binding.imageOnboarding.setImageResource(imageResource)
+        }
         return binding.root
     }
 
