@@ -4,36 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.RegisterActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ui.register.RegisterActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/vector_top"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="-200dp"
-        android:layout_marginEnd="-100dp" />
+        android:layout_marginEnd="-100dp"
+        android:src="@drawable/vector_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-50dp"
+        android:layout_marginBottom="-250dp"
         android:src="@drawable/vector_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="-250dp"
-        android:layout_marginStart="-50dp"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:src="@drawable/vector_left"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="100dp"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -50,8 +48,8 @@
                 android:id="@+id/btn_back_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_arrow_back_24"
-                android:layout_marginTop="@dimen/small_100"/>
+                android:layout_marginTop="@dimen/small_100"
+                android:src="@drawable/baseline_arrow_back_24" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text"
                 android:layout_marginTop="@dimen/small_25"
-                android:hint="@string/masukkan_email_anda">
+                app:hintEnabled="false">
 
                 <EditText
                     android:id="@+id/et_full_name"
@@ -83,9 +81,10 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_edit_text"
                     android:fontFamily="@font/poppins"
+                    android:hint="@string/masukkan_email_anda"
+                    android:importantForAutofill="no"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint"
-                    android:importantForAutofill="no" />
+                    android:textColorHint="@color/text_color_hint" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,9 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text"
                 android:layout_marginTop="@dimen/small_25"
-                android:hint="@string/masukkan_kata_sandi"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/colorPrimaryDark">
+                app:endIconTint="@color/colorPrimaryDark"
+                app:hintEnabled="false">
 
                 <EditText
                     android:id="@+id/et_password"
@@ -112,10 +111,11 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_edit_text"
                     android:fontFamily="@font/poppins"
+                    android:hint="@string/masukkan_kata_sandi"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint"
-                    android:importantForAutofill="no" />
+                    android:textColorHint="@color/text_color_hint" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,9 +132,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text"
                 android:layout_marginTop="@dimen/small_25"
-                android:hint="@string/ulangi_kata_sandi"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/colorPrimaryDark">
+                app:endIconTint="@color/colorPrimaryDark"
+                app:hintEnabled="false">
 
                 <EditText
                     android:id="@+id/et_password_confirm"
@@ -142,10 +142,11 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_edit_text"
                     android:fontFamily="@font/poppins"
+                    android:hint="@string/ulangi_kata_sandi"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/normal_100"
-                    android:textColorHint="@color/text_color_hint"
-                    android:importantForAutofill="no" />
+                    android:textColorHint="@color/text_color_hint" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,7 +161,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/body_1"
-                app:backgroundTint="@null"/>
+                app:backgroundTint="@null" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -228,25 +229,23 @@
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/large_100"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="@dimen/large_100">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sudah_mempunyai_akun"
                     android:layout_marginEnd="@dimen/small_100"
-                    />
+                    android:text="@string/sudah_mempunyai_akun" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/masuk"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/poppins_bold"
                     android:layout_gravity="center"
-                    />
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/masuk"
+                    android:textColor="@color/colorPrimary" />
 
             </LinearLayout>
 
