@@ -11,8 +11,8 @@
     <string name="description_onboarding_2">Request dan booking media iklan dimana saja dan kapan saja, tak perlu repot survei lokasi.</string>
     <string name="title_onboarding_3">Ketahui Angka Impresi Iklan Anda untuk </string>
     <string name="description_onboarding_3">Pantau siapa saja yang melihat iklan Anda dari Data Demografi dan Data Traffic yang kredibel dan terpercaya.</string>
-    <string name="title_onboarding_4" >AI Copywritting untuk Perkembangan Iklan Anda</string>
-    <string name="description_onboarding_4" >Tak perlu takut kehabisan ide, AI Copywritting kami dapat membantu Anda memberikan ide iklan Anda dengan cepat.</string>
+    <string name="title_onboarding_4">AI Copywritting untuk Perkembangan Iklan Anda</string>
+    <string name="description_onboarding_4">Tak perlu takut kehabisan ide, AI Copywritting kami dapat membantu Anda memberikan ide iklan Anda dengan cepat.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error">Error</string>
     <string name="default_text">-</string>
@@ -251,4 +251,9 @@
     <string name="secondary_text_left_2">06:00 - 00:00</string>
     <string name="secondary_text_right_1">Vertikal\n</string>
     <string name="secondary_text_right_2">150k views</string>
+    <string name="iklan">Iklan</string>
+    <string name="penayangan">Penayangan</string>
+    <string name="tab_text_1">Booking</string>
+    <string name="tab_text_2">Iklan</string>
+    <string name="tab_text_3">Penayangan</string>
 </resources>
