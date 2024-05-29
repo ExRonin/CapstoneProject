@@ -245,4 +245,10 @@
     <string name="lihat_daftar_booking">Lihat Daftar Booking</string>
     <string name="cara_membayar">Cara Membayar</string>
     <string name="tnc_desc"><![CDATA[Dengan menekan tombol bayar, kamu menyetujui Syarat & Ketentuan dan Kebijakan Provasi AdVantage.]]></string>
+    <string name="top_left_text">Videotron</string>
+    <string name="titlecardmaps">Videotron Grand Indonesia</string>
+    <string name="secondary_text_left_1">3mx5m \n</string>
+    <string name="secondary_text_left_2">06:00 - 00:00</string>
+    <string name="secondary_text_right_1">Vertikal\n</string>
+    <string name="secondary_text_right_2">150k views</string>
 </resources>
