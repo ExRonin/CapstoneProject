@@ -20,6 +20,7 @@
                 android:layout_height="100dp">
 
                 <ImageView
+                    android:id="@+id/imagemaps"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -41,6 +42,7 @@
                         app:srcCompat="@drawable/icon_billboard" />
 
                     <TextView
+                        android:id="@+id/titlebaliho"
                         android:paddingTop="3dp"
                         android:paddingStart="5dp"
                         android:layout_width="wrap_content"
@@ -58,7 +60,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_marginEnd="21dp"
                     android:padding="8dp"
-                    app:srcCompat="@drawable/icon_bca" />
+                    app:srcCompat="@drawable/baseline_favorite_24" />
 
             </RelativeLayout>
 
@@ -102,6 +104,7 @@
                                 app:srcCompat="@drawable/sizesmaps" />
 
                             <TextView
+                                 android:id="@+id/sizesmaps"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="5dp"
@@ -122,11 +125,11 @@
                                 app:srcCompat="@drawable/operationalhour" />
 
                             <TextView
+                                android:id="@+id/timemaps"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="5dp"
                                 android:text="@string/secondary_text_left_2"
-
                                 android:textColor="?android:attr/textColorSecondary"
                                 />
 
@@ -152,6 +155,7 @@
                                 app:srcCompat="@drawable/ratio" />
 
                             <TextView
+                                android:id="@+id/ratiomaps"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="5dp"
@@ -172,6 +176,7 @@
                                 app:srcCompat="@drawable/insight" />
 
                             <TextView
+                                android:id="@+id/viewmaps"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/secondary_text_right_2"
