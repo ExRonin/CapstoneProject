@@ -57,6 +57,7 @@ dependencies {
     implementation ("com.romandanylyk:pageindicatorview:1.0.3")
     implementation ("com.airbnb.android:lottie:6.4.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("androidx.viewpager:viewpager:1.0.0")
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.2.0")
