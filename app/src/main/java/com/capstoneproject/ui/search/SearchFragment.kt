@@ -20,10 +20,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.R
 import com.capstoneproject.databinding.FragmentSearchBinding
-import com.capstoneproject.ui.search.adapter.CardPagerAdapter
+import com.capstoneproject.ui.search.adapter.ItemData
+import com.capstoneproject.ui.search.adapter.RecyclerViewAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -41,6 +43,14 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var geocoder: Geocoder
     private lateinit var googleMap: GoogleMap
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewAdapter: RecyclerViewAdapter
+
+    private val itemList = listOf(
+      ItemData(R.drawable.icon_x, "Videotron", "Title 1", "Size 1", "Time 1", "Ratio 1", "Views 1", "Rp.55.000.000", "Rp.53.000.000"),
+        ItemData(R.drawable.icon_google, "Manualtron" ,"Title 2", "Size 2", "Time 2", "Ratio 2", "Views 2", "Rp.60.000.000", "Rp.58.000.000")
+
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,11 +76,13 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
-        val adapter = CardPagerAdapter(requireContext())
-        viewPager.adapter = adapter
+        recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewAdapter = RecyclerViewAdapter(itemList)
+        recyclerView.adapter = recyclerViewAdapter
 
         return view
+
     }
 
     override fun onMapReady(map: GoogleMap) {
