@@ -20,8 +20,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import com.capstoneproject.R
 import com.capstoneproject.databinding.FragmentSearchBinding
+import com.capstoneproject.ui.search.adapter.CardPagerAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -63,6 +65,10 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
+        val adapter = CardPagerAdapter(requireContext())
+        viewPager.adapter = adapter
 
         return view
     }
