@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="270dp"
             android:background="@android:color/transparent"
-            android:paddingTop="20dp"
+            android:paddingTop="5dp"
             android:clipToPadding="false"
             android:paddingStart="20dp"
             android:paddingEnd="130dp" />

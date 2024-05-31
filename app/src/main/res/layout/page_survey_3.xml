@@ -10,9 +10,13 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:paddingStart="25dp"
-        android:text="Pertanyaan 3: "
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:text="@string/survey3"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,7 +26,7 @@
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -36,39 +40,39 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota1" />
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota2" />
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota3" />
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota4" />
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota5" />
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="125dp"
+            android:layout_height="155dp"
             android:layout_margin="8dp"
-            android:src="@drawable/icon_x" />
+            android:src="@drawable/kota6" />
 
 
     </GridLayout>
@@ -76,7 +80,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:background="@android:color/white"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -87,10 +91,10 @@
         android:id="@+id/submitButton"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/bg_btn_color_primary"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/masuk"
+        android:text="@string/next"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/body_1"
