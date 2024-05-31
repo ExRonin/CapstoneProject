@@ -39,11 +39,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:exported="true">
         </activity>
         <activity android:name=".ui.onboardscreen.OnboardingActivity" />
         <activity
@@ -52,7 +48,14 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.survey.ActivitySurvey" />
+        <activity android:name=".ui.survey.ActivitySurvey"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.splashscreen.SplashActivity"
             android:exported="true">
