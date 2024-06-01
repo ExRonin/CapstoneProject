@@ -23,11 +23,13 @@
 
     <Button
         android:id="@+id/yesButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:layout_marginTop="128dp"
-        android:text="Tidak"
+        app:backgroundTint="@null"
+        android:text="Tidak ❌"
         android:fontFamily="@font/poppins_medium"
+        android:background="@drawable/bg_btn_color_primary"
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/noButton"
@@ -35,11 +37,13 @@
 
     <Button
         android:id="@+id/noButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:layout_marginTop="128dp"
-        android:text="Pernah"
+        app:backgroundTint="@null"
+        android:text="Pernah ✅"
         android:textAllCaps="false"
+        android:background="@drawable/bg_btn_color_primary"
         android:textSize="@dimen/body_1"
         app:layout_constraintLeft_toRightOf="@+id/yesButton"
         app:layout_constraintRight_toRightOf="parent"
