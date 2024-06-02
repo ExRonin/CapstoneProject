@@ -38,5 +38,7 @@
     <color name="text_orange">#FFA033</color>
     <color name="soft_orange">#FFF8E2</color>
     <color name="warning">#FDB022</color>
+    <color name="blue">#426ff1</color>
+
 
 </resources>
