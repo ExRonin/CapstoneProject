@@ -259,4 +259,7 @@
     <string name="survey3">Dimana lokasi iklan Anda ingin tayangkan?</string>
     <string name="survey1">Apa Anda pernah melakukan penayangan iklan luar ruangan?</string>
     <string name="survey4">Pilih jenis media iklan yang Anda butuhkan</string>
+    <string name="pembayaran">Pembayaran</string>
+    <string name="total">Total</string>
+    <string name="selesaikan_pembayaran">Selesaikan Pembayaran</string>
 </resources>
