@@ -7,12 +7,12 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.location.Geocoder
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -26,15 +26,14 @@ import com.capstoneproject.R
 import com.capstoneproject.databinding.FragmentSearchBinding
 import com.capstoneproject.ui.search.adapter.ItemData
 import com.capstoneproject.ui.search.adapter.RecyclerViewAdapter
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import androidx.navigation.fragment.findNavController
 
 class SearchFragment : Fragment(), OnMapReadyCallback {
 
@@ -47,9 +46,8 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
     private val itemList = listOf(
-      ItemData(R.drawable.icon_x, "Videotron", "Title 1", "Size 1", "Time 1", "Ratio 1", "Views 1", "Rp.55.000.000", "Rp.53.000.000"),
-        ItemData(R.drawable.icon_google, "Manualtron" ,"Title 2", "Size 2", "Time 2", "Ratio 2", "Views 2", "Rp.60.000.000", "Rp.58.000.000")
-
+        ItemData(R.drawable.icon_x, "Videotron", "Title 1", "Size 1", "Time 1", "Ratio 1", "Views 1", "Rp.55.000.000", "Rp.53.000.000"),
+        ItemData(R.drawable.icon_google, "Manualtron", "Title 2", "Size 2", "Time 2", "Ratio 2", "Views 2", "Rp.60.000.000", "Rp.58.000.000")
     )
 
     override fun onCreateView(
@@ -64,17 +62,12 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        binding.etSearchMain.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if ((s?.length ?: 0) >= MIN_SEARCH_LENGTH) {
-                    searchForLocation(s.toString())
-                }
+        binding.etSearchMain.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                navigateToSearchResults()
             }
+        }
 
-            override fun afterTextChanged(s: Editable?) {}
-        })
 
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -82,8 +75,14 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         recyclerView.adapter = recyclerViewAdapter
 
         return view
-
     }
+
+    private fun navigateToSearchResults() {
+        Log.d("SearchFragment", "Navigating to search results")
+        findNavController().navigate(R.id.action_searchFragment_to_searchResultsFragment)
+    }
+
+
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
@@ -115,20 +114,6 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
 
         getMyLocation()
         setMapStyle()
-    }
-
-    private fun searchForLocation(query: String) {
-        @Suppress("DEPRECATION") val addresses = geocoder.getFromLocationName(query, MAX_RESULTS)
-        if (addresses != null) {
-            if (addresses.isNotEmpty()) {
-                val address = addresses[0]
-                val latLng = address?.let { LatLng(it.latitude, address.longitude) }
-                latLng?.let { CameraUpdateFactory.newLatLngZoom(it, 15f) }
-                    ?.let { googleMap.animateCamera(it) }
-            } else {
-                Log.d(TAG, "No results found for query: $query")
-            }
-        }
     }
 
 
@@ -187,8 +172,6 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
     }
 
     companion object {
-        private const val MIN_SEARCH_LENGTH = 3
-        private const val MAX_RESULTS = 1
         private const val TAG = "SearchFragment"
     }
 }
