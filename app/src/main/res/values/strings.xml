@@ -262,4 +262,6 @@
     <string name="pembayaran">Pembayaran</string>
     <string name="total">Total</string>
     <string name="selesaikan_pembayaran">Selesaikan Pembayaran</string>
+    <string name="last_search">Pencarian Terakhir</string>
+    <string name="location_recomendation">Rekomendasi Lokasi</string>
 </resources>
