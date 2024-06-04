@@ -46,8 +46,11 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
     private val itemList = listOf(
-        ItemData(R.drawable.icon_x, "Videotron", "Title 1", "Size 1", "Time 1", "Ratio 1", "Views 1", "Rp.55.000.000", "Rp.53.000.000"),
-        ItemData(R.drawable.icon_google, "Manualtron", "Title 2", "Size 2", "Time 2", "Ratio 2", "Views 2", "Rp.60.000.000", "Rp.58.000.000")
+        ItemData(R.drawable.videotron, "Videotron", "Videotron Grand Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.55.000.000", "Rp.53.000.000"),
+        ItemData(R.drawable.videotron1, "Manual", "Mall Of Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.60.000.000", "Rp.58.000.000"),
+        ItemData(R.drawable.videotron2, "Videotron", "PIK Of Avenue", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.100.000.000", "Rp.98.000.000"),
+        ItemData(R.drawable.videotron3, "Videotron", "Videotron Bundaran HI", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.70.000.000", "Rp.68.000.000"),
+        ItemData(R.drawable.videotron4, "Videotron", "SCBD Lot 9", "5mx3m", "06:00-00.00", "Vertikal", "150k views","Rp.60.000.000", "Rp.58.000.000"),
     )
 
     override fun onCreateView(
