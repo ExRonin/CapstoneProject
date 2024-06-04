@@ -31,6 +31,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingTop="50dp"
+        >
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map_view"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingTop="70dp"
         android:paddingStart="16dp"
         >
@@ -69,4 +84,53 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />
     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:clipChildren="false">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="@android:color/transparent"
+            android:paddingTop="5dp"
+            android:clipToPadding="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="130dp"
+            android:visibility="gone"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            app:backgroundTint="@color/white"
+            app:itemIconSize="@dimen/normal_115"
+            app:itemPaddingTop="@dimen/normal_100"
+            app:itemPaddingBottom="@dimen/normal_75"
+            app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActive="@style/BottomNavTextAppearanceActive"
+            app:itemTextAppearanceInactive="@style/BottomNavTextAppearanceInactive"
+            app:itemIconTint="@color/bottom_nav_icon_colors"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_filter"
+            app:itemRippleColor="@color/white"
+            app:rippleColor="@color/white"
+            app:itemActiveIndicatorStyle="@android:color/transparent"
+            android:visibility="gone"
+            />
+
+
+    </LinearLayout>
+
+
 </FrameLayout>

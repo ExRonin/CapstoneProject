@@ -66,6 +66,8 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
             if (hasFocus) {
                 navigateToSearchResults()
             }
+
+            binding.etSearchMain.isFocusable = false
         }
 
 

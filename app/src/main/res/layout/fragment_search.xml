@@ -25,7 +25,9 @@
             android:inputType="text"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+
+            />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/map_view"

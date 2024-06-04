@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/filterFragment"
+        android:title="Filter"
+        android:icon="@drawable/filter"/>
+
+    <item
+        android:id="@+id/hargaFragment"
+        android:title="Harga"
+        android:icon="@drawable/price"/>
+
+    <item
+        android:id="@+id/urutkanFragment"
+        android:title="Urutkan"
+        android:icon="@drawable/sort"/>
+
+    <item
+        android:id="@+id/bandingkanFragment"
+        android:title="Bandingkan"
+        android:icon="@drawable/banding"/>
+</menu>
