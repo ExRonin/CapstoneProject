@@ -39,36 +39,42 @@
 
 
         <ImageView
+            android:id="@+id/image1"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
             android:src="@drawable/kota1" />
 
         <ImageView
+            android:id="@+id/image2"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
             android:src="@drawable/kota2" />
 
         <ImageView
+            android:id="@+id/image3"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
             android:src="@drawable/kota3" />
 
         <ImageView
+            android:id="@+id/image4"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
             android:src="@drawable/kota4" />
 
         <ImageView
+            android:id="@+id/image5"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
             android:src="@drawable/kota5" />
 
         <ImageView
+            android:id="@+id/image6"
             android:layout_width="100dp"
             android:layout_height="155dp"
             android:layout_margin="8dp"
@@ -92,7 +98,7 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="@drawable/bg_btn_color_primary"
+        android:background="@drawable/bg_btn_selector"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/next"
         android:textAllCaps="false"
