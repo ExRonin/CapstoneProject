@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.R
 import com.capstoneproject.databinding.FragmentSearchResultsBinding
+import com.capstoneproject.ui.filter.FilterFragment
 import com.capstoneproject.ui.search.adapter.ItemData
 import com.capstoneproject.ui.search.adapter.RecyclerViewAdapter
 import com.capstoneproject.ui.search.adapter.SearchResultItem
 import com.capstoneproject.ui.search.adapter.SearchResultsAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SearchResultsFragment : Fragment() {
 
@@ -26,7 +29,7 @@ class SearchResultsFragment : Fragment() {
     private val searchResults = mutableListOf<SearchResultItem>()
     private lateinit var recentSearchesAdapter: SearchResultsAdapter
     private lateinit var recommendationsAdapter: SearchResultsAdapter
-
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     private val itemList = listOf(
         ItemData(R.drawable.videotron3, "Videotron", "Videotron Bundaran HI", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.70.000.000", "Rp.68.000.000"),
@@ -54,9 +57,19 @@ class SearchResultsFragment : Fragment() {
         _binding = FragmentSearchResultsBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        bottomNavigationView = view.findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.menu.findItem(R.id.filterFragment).isChecked = false
+        bottomNavigationView.menu.findItem(R.id.hargaFragment).isChecked = false
+        bottomNavigationView.menu.findItem(R.id.urutkanFragment).isChecked = false
+        bottomNavigationView.menu.findItem(R.id.bandingkanFragment).isChecked = false
+
+        setupBottomNavigation()
+
+        binding.backbtn.setOnClickListener {
+            findNavController().navigate(R.id.searchFragment)
+        }
 
         searchResultsAdapter = SearchResultsAdapter(searchResults)
-
         recentSearchesAdapter = SearchResultsAdapter(recentSearches)
         recommendationsAdapter = SearchResultsAdapter(recommendations)
 
@@ -85,8 +98,34 @@ class SearchResultsFragment : Fragment() {
         setupRecyclerViewClickListener()
         setupSearchEditText()
         return view
+
+
     }
 
+
+    private fun setupBottomNavigation() {
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.filterFragment -> {
+                    findNavController().navigate(R.id.action_searchResultsFragment_to_filterFragment)
+                    true
+                }
+//                R.id.hargaFragment -> {
+//                    findNavController().navigate(R.id.action_searchResultsFragment_to_hargaFragment)
+//                    true
+//                }
+//                R.id.urutkanFragment -> {
+//                    findNavController().navigate(R.id.action_searchResultsFragment_to_urutkanFragment)
+//                    true
+//                }
+//                R.id.bandingkanFragment -> {
+//                    findNavController().navigate(R.id.action_searchResultsFragment_to_bandingkanFragment)
+//                    true
+//                }
+                else -> false
+            }
+        }
+    }
     private fun setupRecyclerViewClickListener() {
         recentSearchesAdapter.setOnItemClickListener {
             binding.mapView.visibility = View.VISIBLE

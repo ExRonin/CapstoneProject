@@ -264,4 +264,5 @@
     <string name="selesaikan_pembayaran">Selesaikan Pembayaran</string>
     <string name="last_search">Pencarian Terakhir</string>
     <string name="location_recomendation">Rekomendasi Lokasi</string>
+    <string name="apply_filter">Terapkan Filter</string>
 </resources>
