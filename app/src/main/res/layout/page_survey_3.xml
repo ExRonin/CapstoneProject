@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:paddingBottom="20dp"
         android:paddingStart="40dp"
@@ -84,20 +84,20 @@
     </GridLayout>
 
     <View
+        android:id="@+id/container_button"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="188dp"
         android:background="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:background="@drawable/bg_btn_selector"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/next"
@@ -105,9 +105,10 @@
         android:textColor="@color/white"
         android:textSize="@dimen/body_1"
         app:backgroundTint="@null"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridLayout" />
+        app:layout_constraintTop_toTopOf="@id/container_button"
+        app:layout_constraintBottom_toBottomOf="@id/container_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
