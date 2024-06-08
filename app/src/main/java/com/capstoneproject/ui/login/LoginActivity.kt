@@ -21,6 +21,7 @@ import com.capstoneproject.databinding.ActivityLoginBinding
 import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.ui.register.RegisterActivity
 import com.capstoneproject.ui.survey.ActivitySurvey
+import com.capstoneproject.utils.hideSoftKeyboard
 import com.capstoneproject.utils.showDialogError
 import com.capstoneproject.utils.showDialogLoading
 import com.capstoneproject.utils.showDialogSuccess
@@ -53,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 val email = etEmail.text.toString().trim()
                 val password = etPassword.text.toString().trim()
                 if (checkValidation(email, password)) {
+                    hideSoftKeyboard(this@LoginActivity, binding.root)
                     login(email, password)
                 }
             }
