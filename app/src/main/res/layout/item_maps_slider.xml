@@ -32,7 +32,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:background="@drawable/circular_image_crop">
 
                 <ImageView
                     android:layout_width="24dp"

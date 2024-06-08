@@ -32,6 +32,12 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
                 progressIndicator.progress = position + 1
             }
         })
+
+        binding.btnCancel.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun onSubmitClick(position: Int) {
