@@ -1,4 +1,4 @@
-package com.capstoneproject.adapter
+package com.capstoneproject.`common-adapter`
 
 import android.view.LayoutInflater
 import android.view.View

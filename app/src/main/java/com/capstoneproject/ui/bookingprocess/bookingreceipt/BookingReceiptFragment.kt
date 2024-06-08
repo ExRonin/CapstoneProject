@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.adapter.TutorialPaymentAdapter
+import com.capstoneproject.`common-adapter`.TutorialPaymentAdapter
 import com.capstoneproject.data.dummy.TutorialPaymentData
 import com.capstoneproject.data.model.TutorialPayment
 import com.capstoneproject.databinding.FragmentBookingReceiptBinding

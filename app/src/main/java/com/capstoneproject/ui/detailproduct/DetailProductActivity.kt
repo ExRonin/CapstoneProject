@@ -3,7 +3,7 @@ package com.capstoneproject.ui.detailproduct
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.capstoneproject.adapter.DetailProductSliderAdapter
+import com.capstoneproject.`common-adapter`.DetailProductSliderAdapter
 import com.capstoneproject.databinding.ActivityDetailProductBinding
 import com.smarteist.autoimageslider.SliderView
 

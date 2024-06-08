@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.adapter.RecommendationLocationAdapter
+import com.capstoneproject.`common-adapter`.RecommendationLocationAdapter
 import com.capstoneproject.data.dummy.RecommendationLocationData
 import com.capstoneproject.data.model.RecommendationLocation
 import com.capstoneproject.databinding.FragmentHomeBinding
