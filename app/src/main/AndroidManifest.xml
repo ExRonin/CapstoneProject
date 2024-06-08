@@ -10,6 +10,7 @@
 
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,11 +41,7 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.onboardscreen.OnboardingActivity" />
         <activity
@@ -52,8 +49,16 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.survey.ActivitySurvey"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.survey.ActivitySurvey"
             android:exported="true">
 
         </activity>

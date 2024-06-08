@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Meat" />
+                    android:text="Harian" />
 
                 <CheckBox
                     android:id="@+id/checkbox_meat"
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Cheese" />
+                    android:text="Mingguan" />
 
                 <CheckBox
                     android:id="@+id/checkbox_cheese"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Veggie" />
+                    android:text="Bulanan" />
 
                 <CheckBox
                     android:id="@+id/checkbox_veggie"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Fruit" />
+                    android:text="Tahunan" />
 
                 <CheckBox
                     android:id="@+id/checkbox_fruit"
