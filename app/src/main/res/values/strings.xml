@@ -265,4 +265,10 @@
     <string name="last_search">Pencarian Terakhir</string>
     <string name="location_recomendation">Rekomendasi Lokasi</string>
     <string name="apply_filter">Terapkan Filter</string>
+    <string name="silahkan_isi_email_terlebih_dahulu">Silahkan isi email terlebih dahulu</string>
+    <string name="silahan_isi_kata_sandi_terlebih_dahulu">Silahan isi kata sandi terlebih dahulu</string>
+    <string name="selamat_anda_berhasil_masuk">Selamat, anda berhasil masuk</string>
+    <string name="apakah_anda_yakin_ingin_keluar">Apakah anda yakin ingin keluar?</string>
+    <string name="iya">Iya</string>
+    <string name="tidak">Tidak</string>
 </resources>
