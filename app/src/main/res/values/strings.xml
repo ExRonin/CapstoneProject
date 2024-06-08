@@ -271,4 +271,12 @@
     <string name="apakah_anda_yakin_ingin_keluar">Apakah anda yakin ingin keluar?</string>
     <string name="iya">Iya</string>
     <string name="tidak">Tidak</string>
+    <string name="username">Username</string>
+    <string name="masukkan_username_anda">Masukkan username anda</string>
+    <string name="silahkan_isi_username_terlebih_dahulu">Silahkan isi username terlebih dahulu</string>
+    <string name="silahkan_isi_nama_lengkap_terlebih_dahulu">Silahkan isi nama lengkap terlebih dahulu</string>
+    <string name="silahkan_isi_nomor_telepon_terlebih_dahulu">Silahkan isi nomor telepon terlebih dahulu</string>
+    <string name="silahkan_isi_kata_sandi_minimal_6_karakter">Silahkan isi kata sandi minimal 6 karakter</string>
+    <string name="konfirmasi_kata_sandi_tidak_sesuai_dengan_kata_sandi">Konfirmasi kata sandi tidak sesuai dengan kata sandi</string>
+    <string name="selamat_anda_berhasil_mendaftarkan_akun">Selamat anda berhasil mendaftarkan akun</string>
 </resources>
