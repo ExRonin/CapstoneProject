@@ -3,12 +3,8 @@ package com.capstoneproject.ui.bookingprocess.bookingdetail.edit_profile
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.capstoneproject.R
 import com.capstoneproject.databinding.ActivityEditProfileOrdererBinding
 
@@ -84,12 +80,10 @@ class EditProfileOrdererActivity : AppCompatActivity() {
         userEmail = intent.getStringExtra("userEmail").toString()
         userPhone = intent.getStringExtra("userPhone").toString()
 
-        if (userFullName != null && userEmail != null && userPhone != null) {
-            binding.apply {
-                etFullName.setText(userFullName)
-                etEmail.setText(userEmail)
-                etPhone.setText(userPhone)
-            }
+        binding.apply {
+            etFullName.setText(userFullName)
+            etEmail.setText(userEmail)
+            etPhone.setText(userPhone)
         }
     }
 }

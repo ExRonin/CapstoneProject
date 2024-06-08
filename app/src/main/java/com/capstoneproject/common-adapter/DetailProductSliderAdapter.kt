@@ -13,7 +13,7 @@ class DetailProductSliderAdapter(imageUrl: ArrayList<String>) :
 
     var sliderList: ArrayList<String> = imageUrl
 
-    class SliderViewHolder(itemView: View?) : SliderViewAdapter.ViewHolder(itemView) {
+    class SliderViewHolder(itemView: View?) : ViewHolder(itemView) {
 
         var imageView: ImageView = itemView!!.findViewById(R.id.myimage)
     }
@@ -31,7 +31,7 @@ class DetailProductSliderAdapter(imageUrl: ArrayList<String>) :
 
     override fun onBindViewHolder(viewHolder: SliderViewHolder?, position: Int) {
         if (viewHolder != null) {
-            Glide.with(viewHolder.itemView).load(sliderList.get(position)).fitCenter()
+            Glide.with(viewHolder.itemView).load(sliderList[position]).fitCenter()
                 .into(viewHolder.imageView)
         }
     }

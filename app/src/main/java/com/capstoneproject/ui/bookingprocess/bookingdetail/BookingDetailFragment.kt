@@ -61,12 +61,14 @@ class BookingDetailFragment : Fragment() {
                 intent.putExtra("userFullName", userFullName)
                 intent.putExtra("userEmail", userEmail)
                 intent.putExtra("userPhone", userPhone)
+                @Suppress("DEPRECATION")
                 startActivityForResult(intent, REQUEST_CODE)
             }
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             userFullName = data?.getStringExtra("userFullNameReturn").toString()

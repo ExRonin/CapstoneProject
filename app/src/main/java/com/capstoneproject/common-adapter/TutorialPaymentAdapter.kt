@@ -20,7 +20,7 @@ class TutorialPaymentAdapter : RecyclerView.Adapter<TutorialPaymentAdapter.ViewH
     class ViewHolder(var binding: ItemSingleTutorialBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var binding =
+        val binding =
             ItemSingleTutorialBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }

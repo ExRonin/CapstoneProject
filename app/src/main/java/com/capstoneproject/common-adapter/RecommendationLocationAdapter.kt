@@ -26,7 +26,7 @@ class RecommendationLocationAdapter: RecyclerView.Adapter<RecommendationLocation
     override fun getItemCount(): Int = listLocation.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (name, desc, image) = listLocation[position]
+        val (_, _, image) = listLocation[position]
         Glide.with(holder.itemView.context)
             .load(image)
             .into(holder.binding.ivLocation)
