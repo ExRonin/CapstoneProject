@@ -3,6 +3,7 @@ package com.capstoneproject.ui.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,12 +28,12 @@ import com.capstoneproject.utils.showDialogLoading
 import com.capstoneproject.utils.showDialogSuccess
 import kotlinx.coroutines.launch
 
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var dialogLoading: AlertDialog
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory(application)
         )[LoginViewModel::class.java]
         dialogLoading = showDialogLoading(this)
+        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
         onAction()
     }
@@ -89,6 +91,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun successAction(data: LoginResponse?) {
         if (data != null) {
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("isFillSurvey", data.data.isFillSurvey)
+            editor.putString("token", data.token)
+            editor.putString("userId", data.data.id)
+            editor.apply()
+
             loginViewModel.saveDataToken(data.data.id, data.token, data.refreshToken)
             val dialogSuccess = showDialogSuccess(
                 this,
@@ -108,7 +116,6 @@ class LoginActivity : AppCompatActivity() {
                 }, 1500)
         }
     }
-
 
     private fun checkValidation(email: String, pass: String): Boolean {
         binding.apply {
@@ -133,4 +140,3 @@ class LoginActivity : AppCompatActivity() {
         const val TAG = "MainActivity"
     }
 }
-
