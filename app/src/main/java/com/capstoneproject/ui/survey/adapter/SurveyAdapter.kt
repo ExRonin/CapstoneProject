@@ -338,7 +338,6 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
                 onSubmitClickListener.onSubmitClick(position)
             }
 
-
             checkSubmitButtonState()
         }
 
