@@ -80,8 +80,8 @@ class UserRepository {
                 } else {
                     val errorBody = response.errorBody()?.string()
                     try {
-                        val json = JSONObject(errorBody)
-                        val errorMessage = json.getString("message")
+                        val json = errorBody?.let { JSONObject(it) }
+                        val errorMessage = json?.getString("message")
                         callback(Resource.Error(errorMessage))
 
                     } catch (e: JSONException) {
@@ -107,8 +107,8 @@ class UserRepository {
                 } else {
                     val errorBody = response.errorBody()?.string()
                     try {
-                        val json = JSONObject(errorBody)
-                        val errorMessage = json.getString("message")
+                        val json = errorBody?.let { JSONObject(it) }
+                        val errorMessage = json?.getString("message")
                         callback(Resource.Error(errorMessage))
 
                     } catch (e: JSONException) {
