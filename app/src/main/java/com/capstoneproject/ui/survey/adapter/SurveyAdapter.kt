@@ -216,7 +216,7 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
         )
 
         fun bind(position: Int) {
-            imageViews.forEachIndexed { index, imageView ->
+            imageViews.forEachIndexed { _, imageView ->
                 imageView.setOnClickListener {
                     toggleImageViewSelection(imageView)
                     checkSubmitButtonState()
