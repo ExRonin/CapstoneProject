@@ -40,6 +40,13 @@ interface ApiService {
         @Path("id") userId: String,
         @Body request: UpdateSurveyStatusRequest
     ): Response<UpdateSurveyStatusResponse>
+
+    @POST("user-preferences")
+    suspend fun updateUserPreferences(
+        @Header("Authorization") token: String,
+        @Body request: UserPreferencesRequest
+    ): Response<UserPreferencesResponse>
+
 }
 
 data class UpdateSurveyStatusRequest(
@@ -52,7 +59,18 @@ data class UpdateSurveyStatusResponse(
     val message: String
 )
 
+data class UserPreferencesRequest(
+    val userId: String,
+    val question1: Boolean,
+    val question2: String,
+    val question3: String,
+    val question4: List<String>
+)
 
+data class UserPreferencesResponse(
+    val status: Boolean,
+    val message: String
+)
 
 
 
