@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
+import com.capstoneproject.R
 import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import com.capstoneproject.data.source.remote.network.UpdateSurveyStatusRequest
 import com.capstoneproject.data.source.remote.network.UpdateSurveyStatusResponse
@@ -16,6 +20,8 @@ import com.capstoneproject.data.source.remote.network.UserPreferencesResponse
 import com.capstoneproject.databinding.ActivitySurveyBinding
 import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.ui.survey.adapter.SurveyAdapter
+import com.capstoneproject.utils.showDialogLoading
+import com.capstoneproject.utils.showDialogSuccess
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -24,6 +30,7 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
 
     private lateinit var binding: ActivitySurveyBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var dialogLoading: AlertDialog
     private val answers = HashMap<Int, Any?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +39,7 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
         setContentView(binding.root)
 
         sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-
+        dialogLoading = showDialogLoading(this)
         val viewPager: ViewPager2 = binding.viewPager
         val progressIndicator: LinearProgressIndicator = binding.progressIndicator
 
@@ -61,8 +68,16 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
         if (position < 3) {
             viewPager.currentItem = position + 1
         } else {
-            Toast.makeText(this, "Survey selesai. Terima kasih!", Toast.LENGTH_LONG).show()
-            sendSurveyData(bundle)
+            dialogLoading.show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                dialogLoading.dismiss()
+                val dialogSuccess = showDialogSuccess(
+                    this,
+                    getString(R.string.survey_selesai_terima_kasih)
+                )
+                dialogSuccess.show()
+                sendSurveyData(bundle)
+            }, 1500)
         }
     }
     private fun sendSurveyData(bundle: Bundle) {
@@ -120,4 +135,5 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
             }
         }
     }
+
 }
