@@ -11,6 +11,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import com.capstoneproject.data.source.remote.network.UpdateSurveyStatusRequest
 import com.capstoneproject.data.source.remote.network.UpdateSurveyStatusResponse
+import com.capstoneproject.data.source.remote.network.UserPreferencesRequest
+import com.capstoneproject.data.source.remote.network.UserPreferencesResponse
 import com.capstoneproject.databinding.ActivitySurveyBinding
 import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.ui.survey.adapter.SurveyAdapter
@@ -22,6 +24,7 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
 
     private lateinit var binding: ActivitySurveyBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private val answers = HashMap<Int, Any?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,17 +51,53 @@ class ActivitySurvey : AppCompatActivity(), SurveyAdapter.OnSubmitClickListener 
             startActivity(intent)
             finish()
         }
+
+
     }
 
-    override fun onSubmitClick(position: Int) {
+    override fun onSubmitClick(position: Int, data: Any? , bundle: Bundle) {
+        answers[position] = data
         val viewPager: ViewPager2 = binding.viewPager
         if (position < 3) {
             viewPager.currentItem = position + 1
         } else {
             Toast.makeText(this, "Survey selesai. Terima kasih!", Toast.LENGTH_LONG).show()
-            updateSurveyStatus()
+            sendSurveyData(bundle)
         }
     }
+    private fun sendSurveyData(bundle: Bundle) {
+        val userId = sharedPreferences.getString("userId", "") ?: return
+        val token = sharedPreferences.getString("token", "") ?: return
+
+        val question1 = bundle.getString("question1")!!.toBoolean()
+        val question2 = bundle.getString("question2")!!
+        val question3 = bundle.getString("question3")!!
+        val question4 = bundle.getStringArrayList("question4")!!
+
+
+        val request = UserPreferencesRequest(
+            userId = userId,
+            question1 = question1,
+            question2 = question2,
+            question3 = question3,
+            question4 = question4
+        )
+
+        lifecycleScope.launch {
+            try {
+                val response: Response<UserPreferencesResponse> = RetrofitInstance.api.updateUserPreferences("Bearer $token", request)
+                if (response.isSuccessful && response.body()?.status == true) {
+                    updateSurveyStatus()
+                } else {
+                    Toast.makeText(this@ActivitySurvey, "Failed to send survey data", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@ActivitySurvey, "An error occurred: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+
     private fun updateSurveyStatus() {
         lifecycleScope.launch {
             try {

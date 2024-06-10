@@ -1,5 +1,6 @@
 package com.capstoneproject.ui.survey.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -14,6 +15,8 @@ import com.capstoneproject.databinding.PageSurvey4Binding
 
 class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private val answers = mutableMapOf<Int, Any?>()
+    val bundle = Bundle()
     private val layoutIds = listOf(
         R.layout.page_survey_1,
         R.layout.page_survey_2,
@@ -22,8 +25,9 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
     )
 
     interface OnSubmitClickListener {
-        fun onSubmitClick(position: Int)
+        fun onSubmitClick(position: Int, data: Any?, bundle: Bundle)
     }
+
 
     override fun getItemViewType(position: Int): Int {
         return layoutIds[position]
@@ -36,41 +40,20 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             R.layout.page_survey_1 -> Survey1ViewHolder(
-                PageSurvey1Binding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    ), parent, false
-                )
+                PageSurvey1Binding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-
             R.layout.page_survey_2 -> Survey2ViewHolder(
-                PageSurvey2Binding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    ), parent, false
-                )
+                PageSurvey2Binding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-
             R.layout.page_survey_3 -> Survey3ViewHolder(
-                PageSurvey3Binding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    ), parent, false
-                )
+                PageSurvey3Binding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-
             R.layout.page_survey_4 -> Survey4ViewHolder(
-                PageSurvey4Binding.inflate(
-                    LayoutInflater.from(
-                        parent.context
-                    ), parent, false
-                )
+                PageSurvey4Binding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is Survey1ViewHolder -> holder.bind(position)
@@ -80,9 +63,10 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
         }
     }
 
-    inner class Survey1ViewHolder(private val binding: PageSurvey1Binding) :
-        RecyclerView.ViewHolder(binding.root) {
+
+    inner class Survey1ViewHolder(val binding: PageSurvey1Binding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
+
             binding.yesButton.setOnClickListener {
                 setButtonSelected(binding.yesButton)
                 updateButtonState(true, binding.yesButton)
@@ -97,13 +81,15 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
                 checkSubmitButtonState()
             }
 
+
             binding.submitButton.setOnClickListener {
-                onSubmitClickListener.onSubmitClick(position)
+                val data = if (binding.yesButton.isSelected) "true" else "false"
+                answers[position] = data
+                bundle.putString("question1", data)
+                onSubmitClickListener.onSubmitClick(position, answers , bundle)
             }
 
-
             checkSubmitButtonState()
-
         }
 
         private fun setButtonSelected(button: Button) {
@@ -122,29 +108,17 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
         private fun checkSubmitButtonState() {
             val isEnabled = binding.yesButton.isSelected || binding.noButton.isSelected
             binding.submitButton.isEnabled = isEnabled
-            if (isEnabled) {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.white
-                    )
+            binding.submitButton.setTextColor(
+                ContextCompat.getColor(
+                    binding.submitButton.context,
+                    if (isEnabled) android.R.color.white else android.R.color.black
                 )
-            } else {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.black
-                    )
-                )
-            }
+            )
         }
-
     }
 
-    inner class Survey2ViewHolder(private val binding: PageSurvey2Binding) :
-        RecyclerView.ViewHolder(binding.root) {
-        private val buttonIds =
-            arrayOf(R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5)
+    inner class Survey2ViewHolder(private val binding: PageSurvey2Binding) : RecyclerView.ViewHolder(binding.root) {
+        private val buttonIds = arrayOf(R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5)
 
         fun bind(position: Int) {
             buttonIds.forEach { buttonId ->
@@ -153,18 +127,35 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
                     setButtonSelected(button)
                     updateButtonState(true, button)
                     buttonIds.filter { it != buttonId }.forEach { otherButtonId ->
-                        updateButtonState(false, binding.root.findViewById<Button>(otherButtonId))
+                        updateButtonState(false, binding.root.findViewById(otherButtonId))
                     }
                     checkSubmitButtonState()
                 }
             }
 
             binding.submitButton.setOnClickListener {
-
-                onSubmitClickListener.onSubmitClick(position)
+                val selectedButton = buttonIds.firstOrNull { id -> binding.root.findViewById<Button>(id).isSelected }
+                val selectedButtonText = selectedButton?.let { getButtonText(buttonIds.indexOf(it)) } ?: ""
+                answers[position] = selectedButtonText
+                bundle.putString("question2", selectedButtonText)
+                onSubmitClickListener.onSubmitClick(position, answers, bundle)
             }
 
-            checkSubmitButtonState()
+
+
+
+    checkSubmitButtonState()
+        }
+
+        private fun getButtonText(index: Int): String {
+            return when (index) {
+                0 -> "Makanan dan Minuman"
+                1 -> "Produk Komersial"
+                2 -> "Event"
+                3 -> "Sosial Dan Komunitas"
+                4 -> "Lainnya"
+                else -> throw IllegalArgumentException("Invalid button index")
+            }
         }
 
         private fun setButtonSelected(button: Button) {
@@ -175,44 +166,24 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
         }
 
         private fun updateButtonState(isSelected: Boolean, button: Button) {
-            if (isSelected) {
-                button.setTextColor(ContextCompat.getColor(button.context, android.R.color.black))
-            } else {
-                button.setTextColor(ContextCompat.getColor(button.context, android.R.color.white))
-            }
+            button.setTextColor(ContextCompat.getColor(button.context, if (isSelected) android.R.color.black else android.R.color.white))
         }
 
         private fun checkSubmitButtonState() {
-            val isEnabled = buttonIds.any { binding.root.findViewById<Button>(it).isSelected }
-            binding.submitButton.isEnabled = isEnabled
-            if (isEnabled) {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.white
-                    )
+            binding.submitButton.isEnabled = buttonIds.any { binding.root.findViewById<Button>(it).isSelected }
+            binding.submitButton.setTextColor(
+                ContextCompat.getColor(
+                    binding.submitButton.context,
+                    if (binding.submitButton.isEnabled) android.R.color.white else android.R.color.black
                 )
-            } else {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.black
-                    )
-                )
-            }
+            )
         }
     }
 
-
-    inner class Survey3ViewHolder(private val binding: PageSurvey3Binding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class Survey3ViewHolder(private val binding: PageSurvey3Binding) : RecyclerView.ViewHolder(binding.root) {
         private val imageViews = arrayOf(
-            binding.image1,
-            binding.image2,
-            binding.image3,
-            binding.image4,
-            binding.image5,
-            binding.image6
+            binding.image1, binding.image2, binding.image3,
+            binding.image4, binding.image5, binding.image6
         )
 
         fun bind(position: Int) {
@@ -224,11 +195,19 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
             }
 
             binding.submitButton.setOnClickListener {
-                onSubmitClickListener.onSubmitClick(position)
+                val selectedCity = imageViews.firstOrNull { it.isSelected }?.let { getCities()[imageViews.indexOf(it)] }
+                answers[position] = selectedCity ?: ""
+                bundle.putString("question3", selectedCity)
+                onSubmitClickListener.onSubmitClick(position, answers , bundle)
             }
 
-            // Inisialisasi status tombol submit
-            checkSubmitButtonState()
+
+
+        checkSubmitButtonState()
+        }
+
+        fun getCities(): List<String> {
+            return listOf("Jakarta", "Bandung", "Yogyakarta", "Surabaya", "Denpasar", "Kota Lainnya")
         }
 
         private fun toggleImageViewSelection(selectedImageView: ImageView) {
@@ -240,26 +219,13 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
             }
 
             if (selectedImageView.isSelected) {
-                selectedImageView.setImageResource(
-                    getImageResourceByIndex(
-                        imageViews.indexOf(
-                            selectedImageView
-                        )
-                    )
-                )
+                selectedImageView.setImageResource(getImageResourceByIndex(imageViews.indexOf(selectedImageView)))
                 selectedImageView.isSelected = false
             } else {
-                selectedImageView.setImageResource(
-                    getSelectedImageResourceByIndex(
-                        imageViews.indexOf(
-                            selectedImageView
-                        )
-                    )
-                )
+                selectedImageView.setImageResource(getSelectedImageResourceByIndex(imageViews.indexOf(selectedImageView)))
                 selectedImageView.isSelected = true
             }
         }
-
 
         private fun getImageResourceByIndex(index: Int): Int {
             return when (index) {
@@ -286,23 +252,13 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
         }
 
         private fun checkSubmitButtonState() {
-            val isAnySelected = imageViews.any { it.isSelected }
-            binding.submitButton.isEnabled = isAnySelected
-            if (isAnySelected) {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.white
-                    )
+            binding.submitButton.isEnabled = imageViews.any { it.isSelected }
+            binding.submitButton.setTextColor(
+                ContextCompat.getColor(
+                    binding.submitButton.context,
+                    if (binding.submitButton.isEnabled) android.R.color.white else android.R.color.black
                 )
-            } else {
-                binding.submitButton.setTextColor(
-                    ContextCompat.getColor(
-                        binding.submitButton.context,
-                        android.R.color.black
-                    )
-                )
-            }
+            )
         }
     }
 
@@ -324,6 +280,12 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
             binding.image12
         )
 
+        val imageLabels = arrayOf(
+            "Baliho", "Bando Jalan", "Bilboard", "Digital Ads",
+            "Videotron/LED", "Neon Box", "Digital Signature", "Transportasi",
+            "Banner", "Lift", "Eskalator", "Wall Branding"
+        )
+
         private val selectedImages = HashSet<Int>() // Daftar indeks gambar yang dipilih
 
         fun bind(position: Int) {
@@ -335,11 +297,14 @@ class SurveyAdapter(private val onSubmitClickListener: OnSubmitClickListener) : 
             }
 
             binding.submitButton.setOnClickListener {
-                onSubmitClickListener.onSubmitClick(position)
+                val selectedImageLabels = selectedImages.map { imageLabels[it] }
+                answers[position] = selectedImageLabels
+                bundle.putStringArrayList("question4", ArrayList(selectedImageLabels))
+                onSubmitClickListener.onSubmitClick(position, answers, bundle)
             }
-
             checkSubmitButtonState()
         }
+
 
 
 
