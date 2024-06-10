@@ -7,17 +7,13 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.R
 import com.capstoneproject.data.Resource
 import com.capstoneproject.data.model.login.LoginRequest
 import com.capstoneproject.data.model.login.LoginResponse
-import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import com.capstoneproject.databinding.ActivityLoginBinding
 import com.capstoneproject.ui.main.MainActivity
 import com.capstoneproject.ui.register.RegisterActivity
@@ -26,7 +22,6 @@ import com.capstoneproject.utils.hideSoftKeyboard
 import com.capstoneproject.utils.showDialogError
 import com.capstoneproject.utils.showDialogLoading
 import com.capstoneproject.utils.showDialogSuccess
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 

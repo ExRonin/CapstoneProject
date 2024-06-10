@@ -279,4 +279,5 @@
     <string name="silahkan_isi_kata_sandi_minimal_6_karakter">Silahkan isi kata sandi minimal 6 karakter</string>
     <string name="konfirmasi_kata_sandi_tidak_sesuai_dengan_kata_sandi">Konfirmasi kata sandi tidak sesuai dengan kata sandi</string>
     <string name="selamat_anda_berhasil_mendaftarkan_akun">Selamat anda berhasil mendaftarkan akun</string>
+    <string name="survey_selesai_terima_kasih">Survey selesai. Terima kasih!</string>
 </resources>
