@@ -110,10 +110,10 @@ class SearchResultsFragment : Fragment() {
                     findNavController().navigate(R.id.action_searchResultsFragment_to_filterFragment)
                     true
                 }
-//                R.id.hargaFragment -> {
-//                    findNavController().navigate(R.id.action_searchResultsFragment_to_hargaFragment)
-//                    true
-//                }
+                R.id.hargaFragment -> {
+                    findNavController().navigate(R.id.action_searchResultsFragment_to_hargaFragment)
+                    true
+                }
 //                R.id.urutkanFragment -> {
 //                    findNavController().navigate(R.id.action_searchResultsFragment_to_urutkanFragment)
 //                    true
