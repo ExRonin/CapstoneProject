@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_searchResultsFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_hargaFragment"
+            app:destination="@id/hargaFragment" />
     </fragment>
 
     <fragment
@@ -41,6 +44,12 @@
         android:name="com.capstoneproject.ui.filter.FilterFragment"
         android:label="FilterFragment"
         tools:layout="@layout/fragment_filter" />
+
+    <fragment
+        android:id="@+id/hargaFragment"
+        android:name="com.capstoneproject.ui.filter.HargaFragment"
+        android:label="HargaFragment"
+        tools:layout="@layout/fragment_harga" />
 
     <fragment
         android:id="@+id/bookingFragment"
