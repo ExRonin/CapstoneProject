@@ -285,4 +285,7 @@
     <string name="horizontal">Horizontal</string>
     <string name="rekomendasi_media_iklan">📍 Rekomendasi Media Iklan</string>
     <string name="temukan_media_iklan_sesuai_dengan_">Temukan media iklan sesuai dengan preferensi anda. Cari berdasarkan jenis media iklan yang Anda inginkan!</string>
+    <string name="dibatalkan">Dibatalkan</string>
+    <string name="lunas">Lunas</string>
+    <string name="order_tidak_ditemukan">Order tidak ditemukan</string>
 </resources>
