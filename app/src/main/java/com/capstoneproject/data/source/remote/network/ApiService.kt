@@ -4,6 +4,7 @@ package com.capstoneproject.data.source.remote.network
 import com.capstoneproject.data.model.login.LoginRequest
 import com.capstoneproject.data.model.login.LoginResponse
 import com.capstoneproject.data.model.logout.LogoutResponse
+import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.data.model.register.RegisterRequest
 import com.capstoneproject.data.model.register.RegisterResponse
 import com.capstoneproject.data.model.user.DetailUserResponse
@@ -47,6 +48,10 @@ interface ApiService {
         @Body request: UserPreferencesRequest
     ): Response<UserPreferencesResponse>
 
+    @GET("products/user-preferences")
+    suspend fun getProductsByUserPreferences(
+        @Header("Authorization") token: String,
+    ): Response<ProductsByUserPreferencesResponse>
 }
 
 data class UpdateSurveyStatusRequest(
@@ -70,6 +75,12 @@ data class UserPreferencesRequest(
 data class UserPreferencesResponse(
     val status: Boolean,
     val message: String
+)
+
+data class ProductsByUserPreferencesResponse(
+    val status: Boolean,
+    val message: String,
+    val data: List<Product>
 )
 
 
