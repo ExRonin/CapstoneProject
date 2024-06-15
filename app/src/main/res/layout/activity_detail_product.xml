@@ -282,7 +282,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp">
+                        android:layout_marginEnd="25dp">
 
                         <ImageView
                             android:id="@+id/typeimageb"
@@ -296,7 +296,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/typeimageb"
-                            android:text="videotron" />
+                            android:text="Videotron" />
 
                     </RelativeLayout>
 
@@ -317,7 +317,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/layoutimg"
-                            android:text="vertikal" />
+                            android:text="Vertikal" />
 
                     </RelativeLayout>
 
@@ -360,6 +360,46 @@
                                 android:text="12" />
 
                         </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <ImageView
+                            android:id="@+id/frontlight"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/lighting"
+                            android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/frontlight"
+                            android:text="Frontlight" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <ImageView
+                            android:id="@+id/streetimg"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/street"
+                            android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/streetimg"
+                            android:text="Street" />
 
                     </RelativeLayout>
 
