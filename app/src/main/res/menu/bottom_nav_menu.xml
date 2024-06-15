@@ -11,6 +11,11 @@
         android:icon="@drawable/selector_search_icon"/>
 
     <item
+        android:id="@+id/monitoringFragment"
+        android:title="Monitoring"
+        android:icon="@drawable/selector_monitoring_icon"/>
+
+    <item
         android:id="@+id/bookingFragment"
         android:title="Booking"
         android:icon="@drawable/selector_history_icon"/>

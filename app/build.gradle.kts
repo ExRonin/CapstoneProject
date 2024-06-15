@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -70,6 +71,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.github.smarteist:autoimageslider:1.4.0")
 
+    implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
     implementation("com.facebook.shimmer:shimmer:0.1.0@aar")
     
 }

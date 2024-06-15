@@ -1,5 +1,9 @@
 package com.capstoneproject.data.model.product
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Product(
     val id: String,
     val endBooked: String,
@@ -23,4 +27,4 @@ data class Product(
     val height: Int,
     val description: String,
     val rating: Double
-)
+): Parcelable

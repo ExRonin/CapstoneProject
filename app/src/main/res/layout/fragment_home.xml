@@ -402,6 +402,61 @@
                     tools:listitem="@layout/item_recommendation_location"
                     android:layout_marginTop="@dimen/normal_100"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:layout_marginEnd="@dimen/normal_100">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rekomendasi_media_iklan"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_lainnya_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lainnya"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temukan_media_iklan_sesuai_dengan_"
+                    android:layout_marginEnd="@dimen/normal_100"
+                    android:textSize="@dimen/caption"
+                    android:layout_marginTop="@dimen/small_50" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/view_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:visibility="visible">
+
+                    <include layout="@layout/layout_item_product_main_loading" />
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recommendation_products"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_advertise_product"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:visibility="gone"/>
+
 
             </LinearLayout>
 
