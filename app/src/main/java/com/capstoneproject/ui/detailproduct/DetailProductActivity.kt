@@ -63,20 +63,33 @@ class DetailProductActivity : AppCompatActivity() {
             binding.widthtext.text = width.toString()
             binding.heighttext.text = height.toString()
             when (type) {
-                "videotron" -> {
+                "Videotron" -> {
                     Glide.with(this@DetailProductActivity).load(R.drawable.typevid).into(typeimage)
                     Glide.with(this@DetailProductActivity).load(R.drawable.typevideotron)
                         .into(typeimageb)
                 }
 
-                "baliho" -> {
+                "Baliho" -> {
                     Glide.with(this@DetailProductActivity).load(R.drawable.typebal).into(typeimage)
                     Glide.with(this@DetailProductActivity).load(R.drawable.typebaliho)
                         .into(typeimageb)
                 }
 
-                else -> {
+                "Billboard" -> {
+                    Glide.with(this@DetailProductActivity).load(R.drawable.typebil).into(typeimage)
+                    Glide.with(this@DetailProductActivity).load(R.drawable.billboard)
+                        .into(typeimageb)
+                }
 
+                "Bando Jalan" -> {
+                    Glide.with(this@DetailProductActivity).load(R.drawable.typestret).into(typeimage)
+                    Glide.with(this@DetailProductActivity).load(R.drawable.street)
+                        .into(typeimageb)
+                }
+
+                else -> {
+                    Glide.with(this@DetailProductActivity).load(R.drawable.typevid).into(typeimage)
+                    Glide.with(this@DetailProductActivity).load(R.drawable.typevideotron)
                 }
             }
 
