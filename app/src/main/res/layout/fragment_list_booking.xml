@@ -14,7 +14,7 @@
         android:background="@color/white">
 
         <EditText
-            android:id="@+id/et_search_main"
+            android:id="@+id/et_search_order"
             android:layout_width="match_parent"
             android:layout_height="@dimen/normal_275"
             android:background="@drawable/bg_edit_text"
@@ -27,7 +27,50 @@
             android:paddingStart="@dimen/normal_100"
             android:paddingEnd="@dimen/normal_100" />
 
+        <RadioGroup
+            android:id="@+id/rb_filter_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pembayaran"
+                android:layout_marginEnd="@dimen/normal_75"
+                android:buttonTint="@color/colorPrimaryDark"/>
+
+            <RadioButton
+                android:id="@+id/rb_paid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lunas"
+                android:layout_marginEnd="@dimen/normal_75"
+                android:buttonTint="@color/colorPrimaryDark"/>
+
+            <RadioButton
+                android:id="@+id/rb_cancelled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dibatalkan"
+                android:buttonTint="@color/colorPrimaryDark"/>
+
+        </RadioGroup>
+
     </LinearLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/view_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_100"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:visibility="visible">
+
+        <include layout="@layout/layout_item_list_booking_placeholder" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_booking"
@@ -35,7 +78,31 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_100"
-        tools:listitem="@layout/item_list_booking"/>
+        tools:listitem="@layout/item_list_booking"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/container_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/tv_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/normal_100"/>
+
+    </LinearLayout>
 
     <View
         android:layout_width="wrap_content"

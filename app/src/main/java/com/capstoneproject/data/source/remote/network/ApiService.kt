@@ -4,6 +4,7 @@ package com.capstoneproject.data.source.remote.network
 import com.capstoneproject.data.model.login.LoginRequest
 import com.capstoneproject.data.model.login.LoginResponse
 import com.capstoneproject.data.model.logout.LogoutResponse
+import com.capstoneproject.data.model.order.OrderResponse
 import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.data.model.register.RegisterRequest
 import com.capstoneproject.data.model.register.RegisterResponse
@@ -52,6 +53,12 @@ interface ApiService {
     suspend fun getProductsByUserPreferences(
         @Header("Authorization") token: String,
     ): Response<ProductsByUserPreferencesResponse>
+
+    @GET("orders/{id}")
+    fun getOrdersByIdUser(
+        @Path("id") id: String,
+        @Header("Authorization") token: String,
+    ): Call<OrderResponse>
 }
 
 data class UpdateSurveyStatusRequest(
