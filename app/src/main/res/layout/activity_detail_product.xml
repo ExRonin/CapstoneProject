@@ -11,6 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -20,9 +21,29 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
-                <com.smarteist.autoimageslider.SliderView
+<!--                <com.smarteist.autoimageslider.SliderView-->
+<!--                    android:id="@+id/slider_image"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/custom_230"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    app:sliderAnimationDuration="600"-->
+<!--                    app:sliderAutoCycleDirection="back_and_forth"-->
+<!--                    app:sliderIndicatorAnimationDuration="600"-->
+<!--                    app:sliderIndicatorEnabled="true"-->
+<!--                    app:sliderIndicatorGravity="center_horizontal|bottom"-->
+<!--                    app:sliderIndicatorMargin="15dp"-->
+<!--                    app:sliderIndicatorOrientation="horizontal"-->
+<!--                    app:sliderIndicatorPadding="3dp"-->
+<!--                    app:sliderIndicatorRadius="2dp"-->
+<!--                    app:sliderIndicatorSelectedColor="#5A5A5A"-->
+<!--                    app:sliderIndicatorUnselectedColor="#FFF"-->
+<!--                    app:sliderScrollTimeInSec="60"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"/>-->
+
+                <ImageView
                     android:id="@+id/slider_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/custom_230"
@@ -117,7 +138,15 @@
                         android:paddingHorizontal="@dimen/small_100"
                         android:paddingVertical="@dimen/small_50">
 
+                        <ImageView
+                            android:id="@+id/typeimage"
+                            android:layout_width="@dimen/normal_75"
+                            android:layout_height="@dimen/normal_75"
+                            android:layout_marginTop="3dp"
+                            android:src="@drawable/typevid"/>
+
                         <TextView
+                            android:id="@+id/type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/default_text"
@@ -145,6 +174,7 @@
                             android:src="@drawable/icon_star" />
 
                         <TextView
+                            android:id="@+id/rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/default_text"
@@ -242,6 +272,100 @@
                     android:layout_marginTop="@dimen/normal_125"
                     android:fontFamily="@font/poppins_semibold" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/small_100">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <ImageView
+                            android:id="@+id/typeimageb"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/typevideotron"
+                            android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:id="@+id/typetext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/typeimageb"
+                            android:text="videotron" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <ImageView
+                            android:id="@+id/layoutimg"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/layout"
+                            android:layout_centerHorizontal="true"/>
+
+                        <TextView
+                            android:id="@+id/layouttext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layoutimg"
+                            android:text="vertikal" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <ImageView
+                            android:id="@+id/sizeimage"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/size"
+                            android:layout_centerHorizontal="true"
+                          />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/sizeimage"
+                            android:layout_marginEnd="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/widthtext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" x " />
+
+                            <TextView
+                                android:id="@+id/heighttext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,7 +393,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="@dimen/small_100"
                         android:orientation="vertical" >
-                        
+
                         <TextView
                             android:id="@+id/tv_name_and_company"
                             android:layout_width="wrap_content"
@@ -287,7 +411,7 @@
                             android:textSize="@dimen/caption"
                             android:textColor="@color/md_grey_600"
                             android:fontFamily="@font/poppins" />
-                        
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -302,6 +426,7 @@
                             android:layout_height="@dimen/normal_100"
                             android:src="@drawable/icon_messafe"
                             />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -321,7 +446,10 @@
                 </LinearLayout>
 
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                />
         </LinearLayout>
 
     </ScrollView>
@@ -358,14 +486,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+
                     <TextView
+                        android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
                         android:text="@string/default_text"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/h6"
-                        tools:text="@string/rp53_000_000" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
