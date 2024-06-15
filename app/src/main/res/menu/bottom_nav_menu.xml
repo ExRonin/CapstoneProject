@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Beranda"
+        android:icon="@drawable/selector_home_icon"/>
+
+    <item
+        android:id="@+id/searchFragment"
+        android:title="Cari"
+        android:icon="@drawable/selector_search_icon"/>
+
+    <item
+        android:id="@+id/bookingFragment"
+        android:title="Booking"
+        android:icon="@drawable/selector_history_icon"/>
+
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Profil"
+        android:icon="@drawable/selector_profile_icon"/>
+</menu>

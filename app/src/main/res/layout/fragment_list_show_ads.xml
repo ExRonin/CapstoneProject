@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.listshowads.ListShowAdsFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/normal_100"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/et_search_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_275"
+            android:background="@drawable/bg_edit_text"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:drawablePadding="@dimen/normal_100"
+            android:drawableTint="@android:color/darker_gray"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingStart="@dimen/normal_100"
+            android:paddingEnd="@dimen/normal_100" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginTop="@dimen/normal_100"
+        tools:listitem="@layout/item_list_show_ads"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/normal_125" />
+
+</LinearLayout>

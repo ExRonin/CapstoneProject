@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        android:layout_marginTop="40dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:text="@string/survey4"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="350dp"
+        android:layout_height="380dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@id/submitButton">
+
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box1"
+            />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box2"
+            />
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box3"
+            />
+
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box4"
+            />
+
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box5"
+            />
+
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box6"
+            />
+
+        <ImageView
+            android:id="@+id/image7"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box7"
+            />
+
+        <ImageView
+            android:id="@+id/image8"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box8"
+            />
+
+        <ImageView
+            android:id="@+id/image9"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box9"
+            />
+
+        <ImageView
+            android:id="@+id/image10"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box10"
+            />
+
+        <ImageView
+            android:id="@+id/image11"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box11"
+            />
+
+        <ImageView
+            android:id="@+id/image12"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/box12"
+            />
+    </GridLayout>
+
+    <View
+        android:id="@+id/container_button"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="188dp"
+        android:background="@android:color/white"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_selector"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_1"
+        app:backgroundTint="@null"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/container_button"
+        app:layout_constraintBottom_toBottomOf="@id/container_button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

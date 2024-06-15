@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/survey1"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/noButton"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="128dp"
+        app:backgroundTint="@null"
+        android:text="Tidak ❌"
+        android:fontFamily="@font/poppins_medium"
+        android:background="@drawable/bg_btn_selector"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/yesButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/yesButton"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="128dp"
+        app:backgroundTint="@null"
+        android:text="Pernah ✅"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_btn_selector"
+        android:textSize="@dimen/body_1"
+        app:layout_constraintLeft_toRightOf="@+id/noButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:id="@+id/container_button"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="188dp"
+        android:background="@android:color/white"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_selector"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_1"
+        app:backgroundTint="@null"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/container_button"
+        app:layout_constraintBottom_toBottomOf="@id/container_button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

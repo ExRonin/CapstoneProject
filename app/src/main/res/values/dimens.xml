@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_50">4dp</dimen>
+    <dimen name="small_100">8dp</dimen>
+    <dimen name="small_125">10dp</dimen>
+
+    <dimen name="normal_75">12dp</dimen>
+    <dimen name="normal_100">16dp</dimen>
+    <dimen name="normal_115">18dp</dimen>
+    <dimen name="normal_125">20dp</dimen>
+    <dimen name="normal_150">24dp</dimen>
+    <dimen name="normal_175">28dp</dimen>
+
+    <dimen name="normal_200">32dp</dimen>
+    <dimen name="normal_225">36dp</dimen>
+    <dimen name="normal_250">40dp</dimen>
+    <dimen name="normal_275">44dp</dimen>
+
+    <!-- You can go on with normal_300, normal_325, etc. -->
+    <!-- You can also go with large_xxx having 'larger' steps -->
+    <dimen name="large_100">32dp</dimen>
+    <dimen name="large_125">40dp</dimen>
+    <dimen name="large_150">48dp</dimen>
+    <dimen name="large_175">56dp</dimen>
+    <dimen name="large_200">64dp</dimen>
+    <dimen name="large_225">72dp</dimen>
+    <dimen name="large_250">80dp</dimen>
+    <dimen name="large_275">90dp</dimen>
+
+    <dimen name="custom_210">210dp</dimen>
+    <dimen name="custom_250">250dp</dimen>
+    <dimen name="custom_230">230dp</dimen>
+    <dimen name="custom_200">200dp</dimen>
+    <dimen name="custom_220">220dp</dimen>
+    <dimen name="custom_180">180dp</dimen>
+
+    <dimen name="image_border_height">80dp</dimen>
+    <dimen name="image_user_profile_normal">40dp</dimen>
+    <dimen name="image_user_profile_large">100dp</dimen>
+    <dimen name="image_75">150dp</dimen>
+    <dimen name="image_60_custom">60dp</dimen>
+    <dimen name="image_75_custom">75dp</dimen>
+    <dimen name="image_90_custom">90dp</dimen>
+    <dimen name="image_50_custom">50dp</dimen>
+    <dimen name="image_54_custom">54dp</dimen>
+    <dimen name="image_36_custom">36dp</dimen>
+    <dimen name="image_100">200dp</dimen>
+
+    <dimen name="h1">96sp</dimen>
+    <dimen name="h2">60sp</dimen>
+    <dimen name="h3">48sp</dimen>
+    <dimen name="h4">34sp</dimen>
+    <dimen name="h5">24sp</dimen>
+    <dimen name="h6">20sp</dimen>
+    <dimen name="subtitle_1">16sp</dimen>
+    <dimen name="subtitle_2">14sp</dimen>
+    <dimen name="body_1">16sp</dimen>
+    <dimen name="body_2">14sp</dimen>
+    <dimen name="button">14sp</dimen>
+    <dimen name="caption">12sp</dimen>
+    <dimen name="overline">10sp</dimen>
+    <dimen name="caption_small">8sp</dimen>
+    <dimen name="small_text">7sp</dimen>
+    <dimen name="edit_text_search_height">56dp</dimen>
+    <dimen name="edit_text">56dp</dimen>
+    <dimen name="button_primary">56dp</dimen>
+    <dimen name="small_75">5dp</dimen>
+    <dimen name="stroke_card">2dp</dimen>
+    <dimen name="height_card">170dp</dimen>
+    <dimen name="rv_artikel_home">600dp</dimen>
+    <dimen name="small_25">2dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="image_40_custom">40dp</dimen>
+    <dimen name="subtitle_first">18sp</dimen>
+    <dimen name="custom_130">130dp</dimen>
+    <dimen name="custom_image_120">120dp</dimen>
+    <dimen name="custom_360">360dp</dimen>
+    <dimen name="stroke_1">1dp</dimen>
+    <dimen name="custom_image_110">110dp</dimen>
+    <dimen name="custom_160">160dp</dimen>
+
+</resources>
