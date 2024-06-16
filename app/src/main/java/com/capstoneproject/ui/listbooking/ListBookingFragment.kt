@@ -40,6 +40,7 @@ class ListBookingFragment : Fragment() {
         _binding = FragmentListBookingBinding.inflate(inflater, container, false)
 
         listBookingViewModel = ViewModelProvider(this)[ListBookingViewModel::class.java]
+        listBookingAdapter = ListBookingAdapter()
 
         return binding.root
     }
@@ -54,7 +55,12 @@ class ListBookingFragment : Fragment() {
     private fun onAction() {
         binding.apply {
             etSearchOrder.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -106,32 +112,39 @@ class ListBookingFragment : Fragment() {
     private fun observeDataOrder() {
         if (token != "" && idUser != "") {
             listBookingViewModel.getOrdersByUserId(id = idUser, token = token)
-            listBookingViewModel.orderByUserIdResponse.observe(viewLifecycleOwner, Observer { response ->
-                when(response) {
-                    is Resource.Error -> {
-                        errorAction(response.message)
+            listBookingViewModel.orderByUserIdResponse.observe(
+                viewLifecycleOwner,
+                Observer { response ->
+                    when (response) {
+                        is Resource.Error -> {
+                            errorAction(response.message)
+                        }
+
+                        is Resource.Loading -> {
+                            loadingAction()
+                        }
+
+                        is Resource.Success -> {
+                            successAction(response.data)
+                        }
                     }
-                    is Resource.Loading -> {
-                        loadingAction()
-                    }
-                    is Resource.Success -> {
-                        successAction(response.data)
-                    }
-                }
-            })
+                })
         }
     }
 
     private fun successAction(data: OrderResponse?) {
         if (data != null) {
-            listBookingAdapter = ListBookingAdapter()
             binding.apply {
                 if (data.data?.isEmpty() == true) {
                     errorAction(getString(R.string.order_tidak_ditemukan))
                 } else {
                     listBookingAdapter.setOrdersList(data.data as List<Order>)
                     rvListBooking.apply {
-                        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                        layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.VERTICAL,
+                            false
+                        )
                         adapter = listBookingAdapter
                     }
                     tvErrorMessage.text = requireContext().getString(R.string.default_text)

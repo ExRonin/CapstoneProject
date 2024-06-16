@@ -288,4 +288,8 @@
     <string name="dibatalkan">Dibatalkan</string>
     <string name="lunas">Lunas</string>
     <string name="order_tidak_ditemukan">Order tidak ditemukan</string>
+    <string name="draft">Draft</string>
+    <string name="aktif">Aktif</string>
+    <string name="disetujui">Disetujui</string>
+    <string name="ditolak">Ditolak</string>
 </resources>

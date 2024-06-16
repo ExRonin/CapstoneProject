@@ -37,4 +37,28 @@ class OrderRepository {
             }
         })
     }
+
+    fun getOrdersShowAdvertisementByIdUser(id:String, token: String, callback: (Resource<OrderResponse>) -> Unit) {
+        apiService.getOrdersShowAdvertisementByIdUser(id, "Bearer ${token}").enqueue(object: Callback<OrderResponse> {
+            override fun onResponse(call: Call<OrderResponse>, response: Response<OrderResponse>) {
+                if (response.isSuccessful) {
+                    callback(Resource.Success(response.body()))
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    try {
+                        val json = errorBody?.let { JSONObject(it) }
+                        val errorMessage = json?.getString("message")
+                        callback(Resource.Error(errorMessage))
+
+                    } catch (e: JSONException) {
+                        callback(Resource.Error(e.message))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
+                callback(Resource.Error(t.message))
+            }
+        })
+    }
 }
