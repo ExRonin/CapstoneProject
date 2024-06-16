@@ -1,6 +1,7 @@
 package com.capstoneproject.data.source.remote.network
 
 
+import com.capstoneproject.data.model.advertisingcontent.AdvertisingContentsResponse
 import com.capstoneproject.data.model.login.LoginRequest
 import com.capstoneproject.data.model.login.LoginResponse
 import com.capstoneproject.data.model.logout.LogoutResponse
@@ -54,11 +55,25 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Response<ProductsByUserPreferencesResponse>
 
-    @GET("orders/{id}")
+    @GET("orders/user/{id}")
     fun getOrdersByIdUser(
         @Path("id") id: String,
         @Header("Authorization") token: String,
     ): Call<OrderResponse>
+
+    @GET("advertising-content/user/{id}")
+    fun getAdvertisingContentsByIdUser(
+        @Path("id") id: String,
+        @Header("Authorization") token: String,
+    ): Call<AdvertisingContentsResponse>
+
+    @GET("orders/show-advertisement/user/{id}")
+    fun getOrdersShowAdvertisementByIdUser(
+        @Path("id") id: String,
+        @Header("Authorization") token: String,
+    ): Call<OrderResponse>
+
+
 }
 
 data class UpdateSurveyStatusRequest(

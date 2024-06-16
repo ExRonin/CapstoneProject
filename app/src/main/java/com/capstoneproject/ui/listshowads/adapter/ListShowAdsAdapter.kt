@@ -1,6 +1,5 @@
-package com.capstoneproject.ui.listbooking.adapter
+package com.capstoneproject.ui.listshowads.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -9,11 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.R
 import com.capstoneproject.data.model.order.Order
-import com.capstoneproject.databinding.ItemListBookingBinding
-import com.capstoneproject.utils.gone
-import com.capstoneproject.utils.visible
+import com.capstoneproject.databinding.ItemListShowAdsBinding
 
-class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>(), Filterable {
+class ListShowAdsAdapter: RecyclerView.Adapter<ListShowAdsAdapter.ViewHolder>(), Filterable {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -21,7 +18,7 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class ViewHolder(var binding: ItemListBookingBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(var binding: ItemListShowAdsBinding): RecyclerView.ViewHolder(binding.root)
 
     private var listOrders = ArrayList<Order>()
     private var filteredList = ArrayList<Order>()
@@ -38,7 +35,7 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemListBookingBinding.inflate(
+            ItemListShowAdsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -52,38 +49,32 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
         var order = filteredList[position]
         holder.binding.apply {
             tvProductName.text = order.productName
-            tvProductBookingDate.text = "${order.startBooked} s/d ${order.endBooked}"
-            tvTotalPayment.text = "Rp ${order.totalPayment}"
-            tvBookingDate.text = "13 Jun 2024, 14:00"
-            tvProductBookingTime.text = "1 Bulan"
+            tvAdsDate.text = "${order.startBooked} s/d ${order.endBooked}"
+            tvAdsLocation.text = order.locationProduct
+            tvProductCategory.text = order.categoryProduct
 
             Glide.with(holder.itemView)
                 .load(order.imageProduct)
                 .into(ivProduct)
 
-            if (order.status != "pending") {
-                btnCompletePayment.gone()
-            }
-
-            if (order.status == "pending") {
+            if (order.status == "approve") {
+                tvStatus.text = "Disetujui"
                 containerStatus.setBackgroundResource(R.drawable.bg_btn_blue)
-                tvStatus.setText(R.string.pembayaran)
             }
 
-            if (order.status == "paid" || order.status == "approve" || order.status == "rejected" || order.status == "active") {
+            if (order.status == "active") {
+                tvStatus.text = "Aktif"
                 containerStatus.setBackgroundResource(R.drawable.bg_btn_green)
-                tvStatus.setText(R.string.lunas)
             }
 
-            if (order.status == "canceled") {
+            if (order.status == "rejected") {
+                tvStatus.text = "Ditolak"
                 containerStatus.setBackgroundResource(R.drawable.bg_btn_red)
-                tvStatus.setText(R.string.dibatalkan)
             }
-        }
 
-        holder.itemView.setOnClickListener {
-            if (order != null) {
-                onItemClickCallback.onItemClicked(order)
+            if (order.status == "ended") {
+                tvStatus.text = "Berakhir"
+                containerStatus.setBackgroundResource(R.drawable.bg_btn_gray)
             }
         }
     }
@@ -120,4 +111,5 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
     interface OnItemClickCallback {
         fun onItemClicked(story: Order)
     }
+
 }
