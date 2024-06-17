@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_close_login"
+            android:id="@+id/btn_close_receipt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_100"
@@ -323,14 +323,14 @@
                 android:text="@string/tnc_desc" />
 
             <Button
-                android:id="@+id/btn_see_list_booking"
+                android:id="@+id/btn_close"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/normal_100"
                 android:layout_marginTop="@dimen/normal_150"
                 android:layout_marginBottom="@dimen/normal_200"
                 android:background="@drawable/bg_btn_color_primary"
-                android:text="@string/lihat_daftar_booking"
+                android:text="@string/tutup"
                 app:backgroundTint="@null" />
 
 

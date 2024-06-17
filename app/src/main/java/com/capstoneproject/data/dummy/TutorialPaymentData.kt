@@ -6,7 +6,7 @@ object TutorialPaymentData {
 
     private val tutorialNames = arrayOf(
         "Transfer Melalui ATM",
-        "Transfer Melalui Livin by Mandiri",
+        "Transfer Melalui M-Banking",
         "Transfer Melalui Internet Banking"
     )
 

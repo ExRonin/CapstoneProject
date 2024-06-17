@@ -2,21 +2,28 @@ package com.capstoneproject.data.source.remote.network
 
 
 import com.capstoneproject.data.model.advertisingcontent.AdvertisingContentsResponse
+import com.capstoneproject.data.model.advertisingcontent.CreateAdvertisingContentResponse
 import com.capstoneproject.data.model.login.LoginRequest
 import com.capstoneproject.data.model.login.LoginResponse
 import com.capstoneproject.data.model.logout.LogoutResponse
+import com.capstoneproject.data.model.order.CreateOrderRequest
+import com.capstoneproject.data.model.order.CreateOrderResponse
 import com.capstoneproject.data.model.order.OrderResponse
 import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.data.model.register.RegisterRequest
 import com.capstoneproject.data.model.register.RegisterResponse
 import com.capstoneproject.data.model.user.DetailUserResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
@@ -73,7 +80,21 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Call<OrderResponse>
 
+    @POST("orders")
+    fun createOrder(
+        @Header("Authorization") token: String,
+        @Body request: CreateOrderRequest
+    ): Call<CreateOrderResponse>
 
+    @Multipart
+    @POST("advertising-content")
+    fun createAds(
+        @Header("Authorization") token: String,
+        @Part("userId") userId: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("category") category: RequestBody,
+        @Part image: MultipartBody.Part
+    ): Call<CreateAdvertisingContentResponse>
 }
 
 data class UpdateSurveyStatusRequest(

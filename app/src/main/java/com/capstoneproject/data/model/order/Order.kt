@@ -35,7 +35,7 @@ data class Order(
     val categoryProduct: String? = null,
 
     @field:SerializedName("totalPayment")
-    val totalPayment: Int? = null,
+    val totalPayment: Double? = null,
 
     @field:SerializedName("phone")
     val phone: String? = null,

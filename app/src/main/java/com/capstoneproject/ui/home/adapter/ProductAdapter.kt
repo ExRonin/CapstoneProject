@@ -14,6 +14,7 @@ import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.data.model.product.ProductResponse
 import com.capstoneproject.databinding.ItemAdvertiseProductBinding
 import com.capstoneproject.ui.detailproduct.DetailProductActivity
+import com.capstoneproject.utils.formatCurrency
 
 class ProductAdapter() :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -44,7 +45,7 @@ class ProductAdapter() :
             tvTitle.text = product.name
             tvType.text = product.type
             tvSize.text = "${product.height}x${product.width}"
-            tvPrice.text = "Rp ${product.price}"
+            tvPrice.text = "Rp ${formatCurrency(product.price)}"
 
             Glide.with(
                 holder.itemView.context

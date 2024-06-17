@@ -1,11 +1,13 @@
 package com.capstoneproject.ui.detailproduct
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.capstoneproject.R
 import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.databinding.ActivityDetailProductBinding
+import com.capstoneproject.ui.bookingprocess.BookingProcessActivity
 import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
@@ -34,6 +36,11 @@ class DetailProductActivity : AppCompatActivity() {
         binding.apply {
             btnBackDetailProduct.setOnClickListener {
                 finish()
+            }
+            btnBooking.setOnClickListener {
+                val intent = Intent(this@DetailProductActivity, BookingProcessActivity::class.java)
+                intent.putExtra("extra_product", product)
+                startActivity(intent)
             }
         }
     }

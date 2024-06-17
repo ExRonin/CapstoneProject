@@ -146,6 +146,108 @@
                 android:text="@string/detail_pesanan"
                 android:textColor="@color/black" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_100"
+                android:layout_marginTop="@dimen/small_100"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tanggal_mulai_pesan"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_100">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/iv_start_booked"
+                    android:layout_width="@dimen/edit_text"
+                    android:layout_height="@dimen/edit_text"
+                    android:background="@drawable/bg_edit_text" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_calendar_month_24"
+                        app:tint="@color/colorPrimaryDark"
+                        android:layout_gravity="center" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text"
+                    android:layout_marginTop="@dimen/small_25"
+                    android:layout_marginStart="@dimen/normal_75"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_start_booked"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit_text"
+                        android:paddingHorizontal="@dimen/normal_100"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="textEmailAddress"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_100"
+                android:layout_marginTop="@dimen/small_100"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/tanggal_akhir_pesan"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_100">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/iv_end_booked"
+                    android:layout_width="@dimen/edit_text"
+                    android:layout_height="@dimen/edit_text"
+                    android:background="@drawable/bg_edit_text" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_calendar_month_24"
+                        app:tint="@color/colorPrimaryDark"
+                        android:layout_gravity="center" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text"
+                    android:layout_marginTop="@dimen/small_25"
+                    android:layout_marginStart="@dimen/normal_75"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/et_end_booked"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit_text"
+                        android:paddingHorizontal="@dimen/normal_100"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="textEmailAddress"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -354,7 +456,7 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/product_name_and_time"
+                                android:id="@+id/tv_product_name_and_price"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -363,7 +465,7 @@
                                 tools:text="@string/videotron_grand_indonesia" />
 
                             <TextView
-                                android:id="@+id/product_price"
+                                android:id="@+id/tv_product_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
@@ -387,13 +489,12 @@
                                 android:text="@string/biaya_booking_pajak" />
 
                             <TextView
-                                android:id="@+id/product_tax"
+                                android:id="@+id/tv_product_tax"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
-                                android:text="@string/default_text"
-                                android:textColor="@color/green"
-                                tools:text="@string/rp53_000_000" />
+                                android:text="@string/rp_1_000_000"
+                                android:textColor="@color/green" />
 
                         </LinearLayout>
 
@@ -415,9 +516,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
-                                android:text="@string/default_text"
-                                android:textColor="@color/green"
-                                tools:text="@string/rp53_000_000" />
+                                android:text="@string/rp_50_000"
+                                android:textColor="@color/green" />
 
                         </LinearLayout>
 
