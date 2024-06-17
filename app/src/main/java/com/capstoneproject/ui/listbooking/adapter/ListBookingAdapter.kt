@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide
 import com.capstoneproject.R
 import com.capstoneproject.data.model.order.Order
 import com.capstoneproject.databinding.ItemListBookingBinding
+import com.capstoneproject.utils.calculateDaysBetween
+import com.capstoneproject.utils.formatCurrency
 import com.capstoneproject.utils.gone
 import com.capstoneproject.utils.visible
 
@@ -53,9 +55,8 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
         holder.binding.apply {
             tvProductName.text = order.productName
             tvProductBookingDate.text = "${order.startBooked} s/d ${order.endBooked}"
-            tvTotalPayment.text = "Rp ${order.totalPayment}"
+            tvTotalPayment.text = "Rp ${formatCurrency(order.totalPayment?.toInt() ?: 0)}"
             tvBookingDate.text = "13 Jun 2024, 14:00"
-            tvProductBookingTime.text = "1 Bulan"
 
             Glide.with(holder.itemView)
                 .load(order.imageProduct)

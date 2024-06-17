@@ -2,6 +2,8 @@ package com.capstoneproject.data.repository
 
 import com.capstoneproject.data.Resource
 import com.capstoneproject.data.model.login.LoginResponse
+import com.capstoneproject.data.model.order.CreateOrderRequest
+import com.capstoneproject.data.model.order.CreateOrderResponse
 import com.capstoneproject.data.model.order.OrderResponse
 import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import org.json.JSONException
@@ -57,6 +59,30 @@ class OrderRepository {
             }
 
             override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
+                callback(Resource.Error(t.message))
+            }
+        })
+    }
+
+    fun createOrder(token: String, orderRequest: CreateOrderRequest, callback: (Resource<CreateOrderResponse>) -> Unit) {
+        apiService.createOrder("Bearer $token", orderRequest).enqueue(object : Callback<CreateOrderResponse> {
+            override fun onResponse(call: Call<CreateOrderResponse>, response: Response<CreateOrderResponse>) {
+                if (response.isSuccessful) {
+                    callback(Resource.Success(response.body()))
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    try {
+                        val json = errorBody?.let { JSONObject(it) }
+                        val errorMessage = json?.getString("message")
+                        callback(Resource.Error(errorMessage))
+
+                    } catch (e: JSONException) {
+                        callback(Resource.Error(e.message))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<CreateOrderResponse>, t: Throwable) {
                 callback(Resource.Error(t.message))
             }
         })

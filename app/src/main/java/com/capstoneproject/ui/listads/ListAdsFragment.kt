@@ -1,5 +1,6 @@
 package com.capstoneproject.ui.listads
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +18,7 @@ import com.capstoneproject.data.model.advertisingcontent.AdvertisingContent
 import com.capstoneproject.data.model.advertisingcontent.AdvertisingContentsResponse
 import com.capstoneproject.databinding.FragmentListAdsBinding
 import com.capstoneproject.ui.listads.adapter.ListAdsAdapter
+import com.capstoneproject.ui.listads.createads.CreateAdsActivity
 import com.capstoneproject.utils.gone
 import com.capstoneproject.utils.visible
 
@@ -52,7 +54,12 @@ class ListAdsFragment : Fragment() {
     private fun onAction() {
         binding.apply {
             etSearchAds.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -78,6 +85,13 @@ class ListAdsFragment : Fragment() {
                     }
                 }
             })
+            fabCreateAds.setOnClickListener {
+                val intent = Intent(requireContext(), CreateAdsActivity::class.java).apply {
+                    putExtra("user_id", idUser)
+                    putExtra("token", token)
+                }
+                startActivity(intent)
+            }
         }
     }
 
@@ -104,19 +118,23 @@ class ListAdsFragment : Fragment() {
     private fun observeDataAdvertisingContent() {
         if (token != "" && idUser != "") {
             listAdsViewModel.getAdvertisingContentsByUserId(id = idUser, token = token)
-            listAdsViewModel.advertisingContentsByUserIdResponse.observe(viewLifecycleOwner, Observer { response ->
-                when(response) {
-                    is Resource.Error -> {
-                        errorAction(response.message)
+            listAdsViewModel.advertisingContentsByUserIdResponse.observe(
+                viewLifecycleOwner,
+                Observer { response ->
+                    when (response) {
+                        is Resource.Error -> {
+                            errorAction(response.message)
+                        }
+
+                        is Resource.Loading -> {
+                            loadingAction()
+                        }
+
+                        is Resource.Success -> {
+                            successAction(response.data)
+                        }
                     }
-                    is Resource.Loading -> {
-                        loadingAction()
-                    }
-                    is Resource.Success -> {
-                        successAction(response.data)
-                    }
-                }
-            })
+                })
         }
     }
 
@@ -128,7 +146,11 @@ class ListAdsFragment : Fragment() {
                 } else {
                     listAdsAdapter.setOrdersList(data.data as List<AdvertisingContent>)
                     rvListAds.apply {
-                        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                        layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.VERTICAL,
+                            false
+                        )
                         adapter = listAdsAdapter
                     }
                     tvErrorMessage.text = requireContext().getString(R.string.default_text)
@@ -160,6 +182,12 @@ class ListAdsFragment : Fragment() {
             tvErrorMessage.text = message
             containerError.visible()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        listAdsViewModel.getAdvertisingContentsByUserId(idUser, token)
     }
 
     override fun onDestroyView() {
