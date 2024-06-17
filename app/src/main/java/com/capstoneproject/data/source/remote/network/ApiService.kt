@@ -8,6 +8,8 @@ import com.capstoneproject.data.model.login.LoginResponse
 import com.capstoneproject.data.model.logout.LogoutResponse
 import com.capstoneproject.data.model.order.CreateOrderRequest
 import com.capstoneproject.data.model.order.CreateOrderResponse
+import com.capstoneproject.data.model.order.CreateShowAdsRequest
+import com.capstoneproject.data.model.order.CreateShowAdsResponse
 import com.capstoneproject.data.model.order.OrderResponse
 import com.capstoneproject.data.model.product.Product
 import com.capstoneproject.data.model.register.RegisterRequest
@@ -95,6 +97,12 @@ interface ApiService {
         @Part("category") category: RequestBody,
         @Part image: MultipartBody.Part
     ): Call<CreateAdvertisingContentResponse>
+
+    @POST("orders/show-advertisement")
+    fun createShowAds(
+        @Header("Authorization") token: String,
+        @Body request: CreateShowAdsRequest
+    ): Call<CreateShowAdsResponse>
 }
 
 data class UpdateSurveyStatusRequest(

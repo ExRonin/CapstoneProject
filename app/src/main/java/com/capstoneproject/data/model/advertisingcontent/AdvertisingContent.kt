@@ -1,7 +1,10 @@
 package com.capstoneproject.data.model.advertisingcontent
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class AdvertisingContent(
 
     @field:SerializedName("imageUrl")
@@ -21,4 +24,4 @@ data class AdvertisingContent(
 
     @field:SerializedName("status")
     val status: String? = null
-)
+): Parcelable
