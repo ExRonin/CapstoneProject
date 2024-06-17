@@ -318,4 +318,10 @@
     <string name="silahkan_masukkan_judul_iklan">Silahkan masukkan judul iklan</string>
     <string name="tidak_ada_gambar_yang_dipilih">Tidak ada gambar yang dipilih</string>
     <string name="selamat_anda_berhasil_membuat_iklan">Selamat, anda berhasil membuat iklan!</string>
+    <string name="tayangkan_iklan">Tayangkan Iklan</string>
+    <string name="pilih_media_iklan">Pilih Media Iklan</string>
+    <string name="pilih_media_iklan_yang_telah_anda_booking">Pilih media iklan yang telah Anda booking.</string>
+    <string name="pilih_iklan">Pilih Iklan</string>
+    <string name="pilih_iklan_yang_ingin_anda_tayangkan">Pilih iklan yang ingin Anda tayangkan.</string>
+    <string name="selamat_anda_berhasil_membuat_penayangan_iklan">Selamat, anda berhasil membuat penayangan iklan</string>
 </resources>

@@ -71,7 +71,7 @@ class ListBookingAdapter() : RecyclerView.Adapter<ListBookingAdapter.ViewHolder>
                 tvStatus.setText(R.string.pembayaran)
             }
 
-            if (order.status == "paid" || order.status == "approve" || order.status == "rejected" || order.status == "active") {
+            if (order.status == "paid" || order.status == "approve" || order.status == "rejected" || order.status == "active"  || order.status == "ended") {
                 containerStatus.setBackgroundResource(R.drawable.bg_btn_green)
                 tvStatus.setText(R.string.lunas)
             }

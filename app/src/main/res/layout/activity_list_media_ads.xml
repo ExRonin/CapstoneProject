@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.listbooking.ListBookingFragment"
+    tools:context=".ui.listshowads.createshowads.ListMediaAdsActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,6 +14,12 @@
         android:orientation="vertical"
         android:padding="@dimen/normal_100"
         android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_24" />
 
         <EditText
             android:id="@+id/et_search_order"
@@ -25,7 +33,8 @@
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:paddingStart="@dimen/normal_100"
-            android:paddingEnd="@dimen/normal_100" />
+            android:paddingEnd="@dimen/normal_100"
+            android:layout_marginTop="@dimen/normal_100"/>
 
         <RadioGroup
             android:id="@+id/rb_filter_product"

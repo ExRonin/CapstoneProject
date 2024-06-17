@@ -1,111 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.listshowads.ListShowAdsFragment"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.listshowads.ListShowAdsFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/normal_100"
-        android:background="@color/white">
-
-        <EditText
-            android:id="@+id/et_search_show_ads"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/normal_275"
-            android:background="@drawable/bg_edit_text"
-            android:drawableStart="@drawable/baseline_search_24"
-            android:drawablePadding="@dimen/normal_100"
-            android:drawableTint="@android:color/darker_gray"
-            android:hint="@string/search"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:paddingStart="@dimen/normal_100"
-            android:paddingEnd="@dimen/normal_100" />
-
-        <RadioGroup
-            android:id="@+id/rb_filter_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rb_approve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/disetujui"
-                android:layout_marginEnd="@dimen/normal_75"
-                android:buttonTint="@color/colorPrimaryDark"/>
-
-            <RadioButton
-                android:id="@+id/rb_active"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aktif"
-                android:layout_marginEnd="@dimen/normal_75"
-                android:buttonTint="@color/colorPrimaryDark"/>
-
-            <RadioButton
-                android:id="@+id/rb_rejected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ditolak"
-                android:buttonTint="@color/colorPrimaryDark"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/view_shimmer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/normal_100"
-        android:layout_marginHorizontal="@dimen/normal_100"
-        android:visibility="visible">
-
-        <include layout="@layout/layout_item_list_ads_placeholder" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_show_ads"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/normal_100"
-        android:layout_marginTop="@dimen/normal_100"
-        tools:listitem="@layout/item_list_show_ads"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:id="@+id/container_error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:visibility="gone">
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_error" />
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/normal_100">
 
-        <TextView
-            android:id="@+id/tv_error_message"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/et_search_show_ads"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/normal_275"
+                android:background="@drawable/bg_edit_text"
+                android:drawableStart="@drawable/baseline_search_24"
+                android:drawablePadding="@dimen/normal_100"
+                android:drawableTint="@android:color/darker_gray"
+                android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingStart="@dimen/normal_100"
+                android:paddingEnd="@dimen/normal_100" />
+
+            <RadioGroup
+                android:id="@+id/rb_filter_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_approve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/normal_75"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:text="@string/disetujui" />
+
+                <RadioButton
+                    android:id="@+id/rb_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/normal_75"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:text="@string/aktif" />
+
+                <RadioButton
+                    android:id="@+id/rb_rejected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:text="@string/ditolak" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/view_shimmer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/default_text"
-            android:textAlignment="center"
-            android:layout_marginTop="@dimen/normal_100"/>
+            android:layout_marginHorizontal="@dimen/normal_100"
+            android:layout_marginTop="@dimen/normal_100"
+            android:visibility="visible">
+
+            <include layout="@layout/layout_item_list_ads_placeholder" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_show_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normal_100"
+            android:layout_marginTop="@dimen/normal_100"
+            android:visibility="gone"
+            tools:listitem="@layout/item_list_show_ads" />
+
+        <LinearLayout
+            android:id="@+id/container_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_empty" />
+
+            <TextView
+                android:id="@+id/tv_error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_100"
+                android:text="@string/default_text"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/normal_125" />
 
     </LinearLayout>
 
-    <View
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_create_show_ads"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/normal_125" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normal_125"
+        android:layout_marginBottom="@dimen/normal_125"
+        android:src="@drawable/baseline_add_24"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

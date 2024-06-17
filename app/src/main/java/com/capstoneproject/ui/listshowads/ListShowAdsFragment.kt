@@ -1,5 +1,6 @@
 package com.capstoneproject.ui.listshowads
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,10 +16,10 @@ import com.capstoneproject.R
 import com.capstoneproject.data.Resource
 import com.capstoneproject.data.model.order.Order
 import com.capstoneproject.data.model.order.OrderResponse
-import com.capstoneproject.databinding.FragmentListBookingBinding
 import com.capstoneproject.databinding.FragmentListShowAdsBinding
 import com.capstoneproject.ui.listbooking.ListBookingFragment
 import com.capstoneproject.ui.listshowads.adapter.ListShowAdsAdapter
+import com.capstoneproject.ui.listshowads.createshowads.CreateShowAdsActivity
 import com.capstoneproject.utils.gone
 import com.capstoneproject.utils.visible
 
@@ -85,6 +86,14 @@ class ListShowAdsFragment : Fragment() {
                     }
                 }
             })
+
+            fabCreateShowAds.setOnClickListener {
+                val intent = Intent(requireContext(), CreateShowAdsActivity::class.java).apply {
+                    putExtra("user_id", idUser)
+                    putExtra("token", token)
+                }
+                startActivity(intent)
+            }
         }
     }
 
@@ -134,10 +143,16 @@ class ListShowAdsFragment : Fragment() {
     private fun successAction(data: OrderResponse?) {
         if (data != null) {
             binding.apply {
-                if (data.data?.isEmpty() == true) {
+
+                val filteredOrders = data.data?.filter { order ->
+                    order?.status == "active" || order?.status == "approve" || order?.status == "rejected" || order?.status == "ended"
+                }
+
+                if (filteredOrders.isNullOrEmpty()) {
                     errorAction(getString(R.string.order_tidak_ditemukan))
                 } else {
-                    listShowAdsAdapter.setOrdersList(data.data as List<Order>)
+
+                    listShowAdsAdapter.setOrdersList(filteredOrders as List<Order>)
                     rvListShowAds.apply {
                         layoutManager = LinearLayoutManager(
                             requireContext(),
@@ -175,6 +190,12 @@ class ListShowAdsFragment : Fragment() {
             tvErrorMessage.text = message
             containerError.visible()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        listShowAdsViewModel.getOrdersShowAdvertisementByUserId(idUser, token)
     }
 
     override fun onDestroyView() {
