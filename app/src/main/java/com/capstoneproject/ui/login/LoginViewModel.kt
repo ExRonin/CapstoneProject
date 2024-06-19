@@ -32,12 +32,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         editor.putString("idUser", idUser)
         editor.putString("token", token)
         editor.putString("refreshToken", refreshToken)
-        editor.putLong("timestamp", EXPIRATION_TIME)
+        editor.putLong("timestamp", System.currentTimeMillis())
         editor.apply()
     }
-
-    companion object {
-        private const val EXPIRATION_TIME: Long = 24 * 60 * 60 * 1000
-    }
-
 }
