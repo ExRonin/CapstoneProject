@@ -1,5 +1,7 @@
 package com.capstoneproject.ui.search
 
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -11,8 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -20,20 +21,28 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.R
+import com.capstoneproject.data.model.product.Product
+import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import com.capstoneproject.databinding.FragmentSearchBinding
-import com.capstoneproject.ui.search.adapter.ItemData
+import com.capstoneproject.ui.detailproduct.DetailProductActivity
 import com.capstoneproject.ui.search.adapter.RecyclerViewAdapter
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment(), OnMapReadyCallback {
 
@@ -45,13 +54,12 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
 
-    private val itemList = listOf(
-        ItemData(R.drawable.videotron, "Videotron", "Videotron Grand Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.55.000.000", "Rp.53.000.000"),
-        ItemData(R.drawable.videotron1, "Manual", "Mall Of Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.60.000.000", "Rp.58.000.000"),
-        ItemData(R.drawable.videotron2, "Videotron", "PIK Of Avenue", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.100.000.000", "Rp.98.000.000"),
-        ItemData(R.drawable.videotron3, "Videotron", "Videotron Bundaran HI", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.70.000.000", "Rp.68.000.000"),
-        ItemData(R.drawable.videotron4, "Videotron", "SCBD Lot 9", "5mx3m", "06:00-00.00", "Vertikal", "150k views","Rp.60.000.000", "Rp.58.000.000"),
-    )
+    private val sharedPreferences by lazy {
+        requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    }
+
+    // List to store markers on the map
+    private val mapMarkers = mutableListOf<Marker>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,19 +81,19 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
             binding.etSearchMain.isFocusable = false
         }
 
-
-        recyclerView = binding.recyclerView
+        recyclerView = binding.recyclerViewSearch
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewAdapter = RecyclerViewAdapter(itemList)
+        recyclerViewAdapter = RecyclerViewAdapter()
         recyclerView.adapter = recyclerViewAdapter
+
 
         return view
     }
 
     private fun navigateToSearchResults() {
-        Log.d("SearchFragment", "Navigating to search results")
         findNavController().navigate(R.id.action_searchFragment_to_searchResultsFragment)
     }
+
 
 
 
@@ -97,30 +105,11 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         googleMap.uiSettings.isCompassEnabled = true
         googleMap.uiSettings.isMapToolbarEnabled = true
 
-        googleMap.setOnMapLongClickListener { latLng ->
-            googleMap.addMarker(
-                MarkerOptions()
-                    .position(latLng)
-                    .title("New Marker")
-                    .snippet("Lat: ${latLng.latitude} Long: ${latLng.longitude}")
-                    .icon(vectorToBitmap(R.drawable.icon_baliho, Color.parseColor("#8e4585")))
-            )
-        }
-
-        googleMap.setOnPoiClickListener { pointOfInterest ->
-            val poiMarker = googleMap.addMarker(
-                MarkerOptions()
-                    .position(pointOfInterest.latLng)
-                    .title(pointOfInterest.name)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-            )
-            poiMarker?.showInfoWindow()
-        }
-
         getMyLocation()
         setMapStyle()
+        fetchProducts()
+        onAction()
     }
-
 
     private fun vectorToBitmap(@DrawableRes id: Int, @ColorInt color: Int): BitmapDescriptor {
         val vectorDrawable = ResourcesCompat.getDrawable(resources, id, null)
@@ -168,6 +157,62 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         } catch (exception: Resources.NotFoundException) {
             Log.e(TAG, "Can't find style. Error: ", exception)
         }
+    }
+
+    private fun onAction() {
+        recyclerViewAdapter.setOnItemClickCallback(object : RecyclerViewAdapter.OnItemClickCallback {
+            override fun onItemClicked(product: Product) {
+                val intent = Intent(requireContext(), DetailProductActivity::class.java)
+                intent.putExtra("extra_product", product)
+                startActivity(intent)
+            }
+        })
+    }
+
+    private fun fetchProducts() = lifecycleScope.launch {
+        val token = sharedPreferences.getString("token", null)
+        if (token.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), "Authorization token is missing", Toast.LENGTH_SHORT).show()
+            return@launch
+        }
+
+        try {
+            val response = RetrofitInstance.api.getProductsByUserPreferences("Bearer $token")
+            if (response.isSuccessful) {
+                val products = response.body()?.data ?: emptyList()
+                addMarkersToMap(products)
+                recyclerViewAdapter.setListProduct(products)
+                binding.recyclerViewSearch.apply {
+                    layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    adapter = recyclerViewAdapter
+                }
+            } else {
+                val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                Toast.makeText(requireContext(), "Error: $errorMessage", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun addMarkersToMap(products: List<Product>) {
+        for (product in products) {
+            val markerOptions = MarkerOptions()
+                .position(LatLng(product.latitude, product.longitude))
+                .title(product.name)
+                .snippet(product.description)
+                .icon(vectorToBitmap(R.drawable.icon_baliho, Color.parseColor("#8e4585")))
+            googleMap.addMarker(markerOptions)
+        }
+
+        val builder = LatLngBounds.Builder()
+        for (product in products) {
+            builder.include(LatLng(product.latitude, product.longitude))
+        }
+        val bounds = builder.build()
+        val padding = 100
+        val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+        googleMap.animateCamera(cameraUpdate)
     }
 
 

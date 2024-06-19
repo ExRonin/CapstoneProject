@@ -1,63 +1,64 @@
 package com.capstoneproject.ui.search.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.capstoneproject.R
-import com.google.android.material.card.MaterialCardView
+import com.bumptech.glide.Glide
+import com.capstoneproject.data.model.product.Product
+import com.capstoneproject.databinding.ItemAdvertiseProductBinding
+import com.capstoneproject.utils.formatCurrency
 
 
-class RecyclerViewAdapter(private val itemList: List<ItemData>) :
-    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter() :
+    RecyclerView.Adapter<RecyclerViewAdapter.ProductViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-        val card: MaterialCardView = itemView.findViewById(R.id.card)
-        val imageView: ImageView = itemView.findViewById(R.id.imagemaps)
-        val titlebaliho: TextView = itemView.findViewById(R.id.titlebaliho)
-        val title: TextView = itemView.findViewById(R.id.titlecard)
-        val size: TextView = itemView.findViewById(R.id.sizesmaps)
-        val time: TextView = itemView.findViewById(R.id.timemaps)
-        val ratio: TextView = itemView.findViewById(R.id.ratiomaps)
-        val views: TextView = itemView.findViewById(R.id.viewmaps)
-        val originalPrice: TextView = itemView.findViewById(R.id.original_price)
-        val discountedPrice: TextView = itemView.findViewById(R.id.discounted_price)
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_maps_slider, parent, false)
-        return ViewHolder(view)
+    private val productList = ArrayList<Product>()
+
+    fun setListProduct(list: List<Product>) {
+        productList.clear()
+        productList.addAll(list)
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = itemList[position]
-        holder.imageView.setImageResource(item.imageRes)
-        holder.titlebaliho.text = item.titlebaliho
-        holder.title.text = item.title
-        holder.size.text = item.size
-        holder.time.text = item.time
-        holder.ratio.text = item.ratio
-        holder.views.text = item.views
-        holder.originalPrice.text = item.originalPrice
-        holder.discountedPrice.text = item.discountedPrice
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val binding =
+            ItemAdvertiseProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductViewHolder(binding)
     }
 
-    override fun getItemCount() = itemList.size
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val product = productList[position]
+        holder.binding.apply {
+            tvTitle.text = product.name
+            tvType.text = product.type
+            tvSize.text = "${product.height}x${product.width}"
+            tvPrice.text = "Rp ${formatCurrency(product.price)}"
+
+            Glide.with(
+                holder.itemView.context
+            ).load(product.imageUrl)
+                .into(ivProduct)
+        }
+
+        holder.itemView.setOnClickListener {
+            if (product != null) {
+                onItemClickCallback.onItemClicked(product)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = productList.size
+
+    inner class ProductViewHolder(var binding: ItemAdvertiseProductBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    interface OnItemClickCallback {
+        fun onItemClicked(story: Product)
+    }
 }
-
-data class ItemData(
-    val imageRes: Int,
-    val titlebaliho: String,
-    val title: String,
-    val size: String,
-    val time: String,
-    val ratio: String,
-    val views: String,
-    val originalPrice: String,
-    val discountedPrice: String
-)

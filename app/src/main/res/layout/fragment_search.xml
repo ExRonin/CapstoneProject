@@ -47,10 +47,11 @@
         android:clipChildren="false">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerViewSearch"
             android:layout_width="match_parent"
             android:layout_height="270dp"
             android:background="@android:color/transparent"
+            tools:listitem="@layout/item_advertise_product"
             android:paddingTop="5dp"
             android:clipToPadding="false"
             android:paddingStart="20dp"
