@@ -58,6 +58,7 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
         editor.remove("idUser")
         editor.remove("token")
         editor.remove("refreshToken")
+        editor.remove("timestamp")
         editor.apply()
         _token.value = null
         _refreshToken.value = null

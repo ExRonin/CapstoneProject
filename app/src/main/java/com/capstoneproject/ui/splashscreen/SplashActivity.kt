@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.R
 import com.capstoneproject.ui.login.LoginActivity
@@ -34,14 +35,13 @@ class SplashActivity : AppCompatActivity() {
                 val token = sharedPreferences.getString("token", null)
                 val savedTimestamp = sharedPreferences.getLong("timestamp", 0)
                 val currentTime = System.currentTimeMillis()
+                Log.d("SplashActivity", "waktunya : $currentTime, $savedTimestamp, $EXPIRATION_TIME, hasil : ${currentTime - savedTimestamp}")
 
                 if (isFirstRun) {
-                    val editor = sharedPreferences.edit()
-                    editor.putBoolean("is_first_run", false)
-                    editor.apply()
+                    markAppAsNotFirstRun(sharedPreferences)
                     startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
                 } else {
-                    if (token != null && (currentTime - savedTimestamp < EXPIRATION_TIME)) {
+                    if (token != null && isTokenValid(savedTimestamp, currentTime)) {
                         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                     } else {
                         clearDataToken(sharedPreferences)
@@ -53,8 +53,14 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        private const val EXPIRATION_TIME: Long = 24 * 60 * 60 * 1000
+    private fun markAppAsNotFirstRun(sharedPreferences: SharedPreferences) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("is_first_run", false)
+        editor.apply()
+    }
+
+    private fun isTokenValid(savedTimestamp: Long, currentTime: Long): Boolean {
+        return currentTime - savedTimestamp < EXPIRATION_TIME
     }
 
     private fun clearDataToken(sharedPreferences: SharedPreferences) {
@@ -64,6 +70,10 @@ class SplashActivity : AppCompatActivity() {
         editor.remove("refreshToken")
         editor.remove("timestamp")
         editor.apply()
+    }
+
+    companion object {
+        private const val EXPIRATION_TIME: Long = 24 * 60 * 60 * 1000 // 24 hours
     }
 
 }
