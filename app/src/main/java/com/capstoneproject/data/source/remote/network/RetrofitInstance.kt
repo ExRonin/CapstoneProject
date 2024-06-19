@@ -16,7 +16,7 @@ object RetrofitInstance {
 
     val api: ApiService by lazy {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:7000/")
+            .baseUrl("https://advantage-api-tlyg3jaksq-et.a.run.app/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

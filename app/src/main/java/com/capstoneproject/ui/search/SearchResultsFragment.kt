@@ -1,22 +1,31 @@
 package com.capstoneproject.ui.search
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.R
+import com.capstoneproject.data.model.product.Product
+import com.capstoneproject.data.source.remote.network.RetrofitInstance
 import com.capstoneproject.databinding.FragmentSearchResultsBinding
-import com.capstoneproject.ui.filter.FilterFragment
-import com.capstoneproject.ui.search.adapter.ItemData
+import com.capstoneproject.ui.detailproduct.DetailProductActivity
+import com.capstoneproject.ui.home.adapter.ProductAdapter
 import com.capstoneproject.ui.search.adapter.RecyclerViewAdapter
 import com.capstoneproject.ui.search.adapter.SearchResultItem
 import com.capstoneproject.ui.search.adapter.SearchResultsAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
 
 class SearchResultsFragment : Fragment() {
 
@@ -31,24 +40,12 @@ class SearchResultsFragment : Fragment() {
     private lateinit var recommendationsAdapter: SearchResultsAdapter
     private lateinit var bottomNavigationView: BottomNavigationView
 
-    private val itemList = listOf(
-        ItemData(R.drawable.videotron3, "Videotron", "Videotron Bundaran HI", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.70.000.000", "Rp.68.000.000"),
-        ItemData(R.drawable.videotron4, "Videotron", "SCBD Lot 9", "5mx3m", "06:00-00.00", "Vertikal", "150k views","Rp.60.000.000", "Rp.58.000.000"),
-        ItemData(R.drawable.videotron, "Videotron", "Videotron Grand Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.55.000.000", "Rp.53.000.000"),
-        ItemData(R.drawable.videotron1, "Manual", "Mall Of Indonesia", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.60.000.000", "Rp.58.000.000"),
-        ItemData(R.drawable.videotron2, "Videotron", "PIK Of Avenue", "5mx3m", "06:00-00.00", "Vertikal", "150k views", "Rp.100.000.000", "Rp.98.000.000"),
-    )
 
-    private val recentSearches = listOf(
-        SearchResultItem("Videotron Plaza Indonesia", "Jl. M.T. Haryono No. 245, Cikoko, Pancoran, Jakar..."),
-        )
+    private val sharedPreferences by lazy {
+        requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    }
 
-    private val recommendations = listOf(
-        SearchResultItem("Videotron Bundaran HI", "Jl. Tb Simatupang No. 123, Jakarta Pusat..."),
-        SearchResultItem("Mall Of Indonesia", "Jl. Merdeka Raya No. 456, Jakarta Pusat..."),
-        SearchResultItem("SCBD Lot 9", "Jl. SCBD No. 222, Jakarta Utara..."),
 
-        )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,8 +67,8 @@ class SearchResultsFragment : Fragment() {
         }
 
         searchResultsAdapter = SearchResultsAdapter(searchResults)
-        recentSearchesAdapter = SearchResultsAdapter(recentSearches)
-        recommendationsAdapter = SearchResultsAdapter(recommendations)
+        recentSearchesAdapter = SearchResultsAdapter(getRecentSearches())
+        recommendationsAdapter = SearchResultsAdapter(emptyList())
 
         binding.recyclerViewRecentSearches.apply {
             layoutManager = LinearLayoutManager(context)
@@ -92,14 +89,44 @@ class SearchResultsFragment : Fragment() {
 
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewAdapter = RecyclerViewAdapter(itemList)
+        recyclerViewAdapter = RecyclerViewAdapter()
         recyclerView.adapter = recyclerViewAdapter
 
         setupRecyclerViewClickListener()
         setupSearchEditText()
+
+
+        fetchProducts()
         return view
+    }
 
 
+    private fun fetchProducts() = lifecycleScope.launch {
+        val token = sharedPreferences.getString("token", null)
+        if (token.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), "Authorization token is missing", Toast.LENGTH_SHORT).show()
+            return@launch
+        }
+
+        try {
+            val response = RetrofitInstance.api.getProductsByUserPreferences("Bearer $token")
+            if (response.isSuccessful) {
+                val products = response.body()?.data ?: emptyList()
+                updateRecommendations(products)
+            } else {
+                val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                Toast.makeText(requireContext(), "Error: $errorMessage", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateRecommendations(products: List<Product>) {
+        val items = products.map { product ->
+            SearchResultItem(product.name, product.description)
+        }
+        recommendationsAdapter.updateData(items)
     }
 
 
@@ -128,62 +155,85 @@ class SearchResultsFragment : Fragment() {
     }
     private fun setupRecyclerViewClickListener() {
         recentSearchesAdapter.setOnItemClickListener {
-            binding.mapView.visibility = View.VISIBLE
-            binding.bottomNavigationView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.VISIBLE
-            binding.recyclerViewRecentSearches.visibility = View.GONE
-            binding.recyclerViewRecommendations.visibility = View.GONE
-            binding.recyclerSearchResult.visibility = View.GONE
-            binding.lasttext.visibility = View.GONE
-            binding.rectext.visibility = View.GONE
+//            binding.mapView.visibility = View.VISIBLE
+//            binding.bottomNavigationView.visibility = View.VISIBLE
+//            binding.recyclerView.visibility = View.VISIBLE
+//            binding.recyclerViewRecentSearches.visibility = View.GONE
+//            binding.recyclerViewRecommendations.visibility = View.GONE
+//            binding.recyclerSearchResult.visibility = View.GONE
+//            binding.lasttext.visibility = View.GONE
+//            binding.rectext.visibility = View.GONE
+            showUnderMaintenanceToast()
         }
 
         recommendationsAdapter.setOnItemClickListener {
-            binding.mapView.visibility = View.VISIBLE
-            binding.bottomNavigationView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.VISIBLE
-            binding.recyclerViewRecentSearches.visibility = View.GONE
-            binding.recyclerViewRecommendations.visibility = View.GONE
-            binding.recyclerSearchResult.visibility = View.GONE
-            binding.lasttext.visibility = View.GONE
-            binding.rectext.visibility = View.GONE
-
-
+//            binding.mapView.visibility = View.VISIBLE
+//            binding.bottomNavigationView.visibility = View.VISIBLE
+//            binding.recyclerView.visibility = View.VISIBLE
+//            binding.recyclerViewRecentSearches.visibility = View.GONE
+//            binding.recyclerViewRecommendations.visibility = View.GONE
+//            binding.recyclerSearchResult.visibility = View.GONE
+//            binding.lasttext.visibility = View.GONE
+//            binding.rectext.visibility = View.GONE
+            showUnderMaintenanceToast()
         }
         searchResultsAdapter.setOnItemClickListener {
-            binding.mapView.visibility = View.VISIBLE
-            binding.bottomNavigationView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.VISIBLE
-            binding.recyclerViewRecentSearches.visibility = View.GONE
-            binding.recyclerViewRecommendations.visibility = View.GONE
-            binding.recyclerSearchResult.visibility = View.GONE
-            binding.lasttext.visibility = View.GONE
-            binding.rectext.visibility = View.GONE
-
-
+//            binding.mapView.visibility = View.VISIBLE
+//            binding.bottomNavigationView.visibility = View.VISIBLE
+//            binding.recyclerView.visibility = View.VISIBLE
+//            binding.recyclerViewRecentSearches.visibility = View.GONE
+//            binding.recyclerViewRecommendations.visibility = View.GONE
+//            binding.recyclerSearchResult.visibility = View.GONE
+//            binding.lasttext.visibility = View.GONE
+//            binding.rectext.visibility = View.GONE
+            showUnderMaintenanceToast()
         }
     }
 
+    private fun showUnderMaintenanceToast() {
+        Toast.makeText(requireContext(), "This feature is under maintenance", Toast.LENGTH_SHORT).show()
+    }
     private fun setupSearchEditText() {
         binding.etSearchResult.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                val searchTerm = binding.etSearchResult.text.toString()
-                performSearch(searchTerm)
+                binding.etSearchResult.text.toString()
+                performSearch()
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
         }
     }
 
-    private fun performSearch(searchTerm: String) {
-
+    private fun performSearch() {
         searchResults.clear()
+        saveRecentSearch()
+        fetchSearchResults()
+    }
 
+    private fun fetchSearchResults() = lifecycleScope.launch {
+        val token = sharedPreferences.getString("token", null)
+        if (token.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), "Authorization token is missing", Toast.LENGTH_SHORT).show()
+            return@launch
+        }
 
-        searchResults.addAll(getDummySearchResults(searchTerm))
+        try {
+            val response = RetrofitInstance.api.getProductsByUserPreferences("Bearer $token")
+            if (response.isSuccessful) {
+                val products = response.body()?.data ?: emptyList()
+                val items = products.map { product ->
+                    SearchResultItem(product.name, product.description)
+                }
+                searchResults.addAll(items)
+                searchResultsAdapter.notifyDataSetChanged()
+            } else {
+                val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                Toast.makeText(requireContext(), "Error: $errorMessage", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
 
-
-        searchResultsAdapter.notifyDataSetChanged()
         binding.recyclerViewRecentSearches.visibility = View.GONE
         binding.recyclerViewRecommendations.visibility = View.GONE
         binding.lasttext.visibility = View.GONE
@@ -191,17 +241,29 @@ class SearchResultsFragment : Fragment() {
         binding.recyclerSearchResult.visibility = if (searchResults.isEmpty()) View.GONE else View.VISIBLE
     }
 
-    private fun getDummySearchResults(searchTerm: String): List<SearchResultItem> {
 
-        val dummyResults = mutableListOf<SearchResultItem>()
-
-        for (i in 1..3) {
-            dummyResults.add(SearchResultItem("Result $i for '$searchTerm'", "Subtitle $i"))
+    private fun saveRecentSearch() {
+        val recentSearches = getRecentSearches().toMutableList()
+        if (recentSearches.size >= 10) {
+            recentSearches.removeAt(recentSearches.size - 1)
         }
+        recentSearches.add(0, SearchResultItem(binding.etSearchResult.text.toString(), ""))
 
-        return dummyResults
+        val recentSearchesJson = Gson().toJson(recentSearches)
+        sharedPreferences.edit().putString("recent_searches", recentSearchesJson).apply()
+
+        recentSearchesAdapter.updateData(recentSearches)
     }
 
+    private fun getRecentSearches(): List<SearchResultItem> {
+        val recentSearchesJson = sharedPreferences.getString("recent_searches", null)
+        return if (recentSearchesJson != null) {
+            val type = object : TypeToken<List<SearchResultItem>>() {}.type
+            Gson().fromJson(recentSearchesJson, type)
+        } else {
+            emptyList()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

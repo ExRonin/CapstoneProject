@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.R
 import com.capstoneproject.databinding.ItemSearchResultBinding
-
-class SearchResultsAdapter(private val itemList: List<SearchResultItem>) :
+class SearchResultsAdapter(private var itemList: List<SearchResultItem>) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
     private var onItemClickListener: ((SearchResultItem) -> Unit)? = null
@@ -38,7 +37,9 @@ class SearchResultsAdapter(private val itemList: List<SearchResultItem>) :
     }
 
     override fun getItemCount() = itemList.size
+
+    fun updateData(newItemList: List<SearchResultItem>) {
+        itemList = newItemList
+        notifyDataSetChanged()
+    }
 }
-
-
-data class SearchResultItem(val title: String, val subtitle: String, val iconRes: Int = R.drawable.locicon)
