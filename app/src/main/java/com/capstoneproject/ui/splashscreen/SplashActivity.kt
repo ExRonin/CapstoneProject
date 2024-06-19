@@ -3,6 +3,7 @@ package com.capstoneproject.ui.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,8 @@ class SplashActivity : AppCompatActivity() {
                 val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
                 val isFirstRun = sharedPreferences.getBoolean("is_first_run", true)
                 val token = sharedPreferences.getString("token", null)
+                val savedTimestamp = sharedPreferences.getLong("timestamp", 0)
+                val currentTime = System.currentTimeMillis()
 
                 if (isFirstRun) {
                     val editor = sharedPreferences.edit()
@@ -38,15 +41,29 @@ class SplashActivity : AppCompatActivity() {
                     editor.apply()
                     startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
                 } else {
-                    if (token != null) {
+                    if (token != null && (currentTime - savedTimestamp < EXPIRATION_TIME)) {
                         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                     } else {
+                        clearDataToken(sharedPreferences)
                         startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                     }
                 }
                 finish()
             }
         }
+    }
+
+    companion object {
+        private const val EXPIRATION_TIME: Long = 24 * 60 * 60 * 1000
+    }
+
+    private fun clearDataToken(sharedPreferences: SharedPreferences) {
+        val editor = sharedPreferences.edit()
+        editor.remove("idUser")
+        editor.remove("token")
+        editor.remove("refreshToken")
+        editor.remove("timestamp")
+        editor.apply()
     }
 
 }
