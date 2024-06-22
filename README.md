@@ -1,6 +1,9 @@
 # Advantage
 Transforming Out-of-Home (OOH) advertising in Indonesia with a modern marketplace that integrates traffic data with advertising spaces.
 
+<img width="1440" alt="Thumnail" src="https://github.com/ExRonin/CapstoneProject/assets/44882861/9fbd5f0a-fdb6-4f19-aeb4-a9e35a6320b5">
+
+
 ## Overview
 Project Advantage aims to transform Out-of-Home (OOH) advertising in Indonesia by introducing a modern marketplace that integrates traffic data with advertising spaces. This initiative addresses the inefficiencies of traditional OOH ads by providing a data-driven platform for advertisers to maximize their impact.
 
